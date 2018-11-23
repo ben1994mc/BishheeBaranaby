@@ -1,0 +1,80 @@
+body 
+{
+    background-color: blue;
+}
+
+header 
+{
+    color: #8CB3B2;
+    height: 15%;
+    width: 90%;
+    margin: 1.25%;
+    padding: 1.25%;
+    top: 0%;
+    left: 0%;
+}
+
+left_bar
+{
+    
+    color: #4B3C39;
+    height: 60%;
+    width: 15%;
+    margin: 1.25%;
+    padding: 1.25%;
+    left: 0%;
+    top: 20%;
+}
+
+main_top_middle
+{
+    color: #BB7C47;
+    height: 25%;
+    width: 60%;
+    margin: 1.25%;
+    padding: 1.25%;
+    left: 25%;
+    top: 25%;
+    bottom: 20%;
+}
+
+main_bottom_middle
+{
+    color: #BB7C47;
+    height: 25%;
+    width: 60%;
+    margin: 1.25%;
+    padding: 1.25%;
+    left: 25%;
+    top: 55%;
+    bottom: 20%;
+}
+
+right_bar
+{
+    color: #4B3C39;
+    height: 60%;
+    width: 15%;
+    margin: 1.25%;
+    padding: 1.25%;
+    right: 0%;
+    top: 20%;
+}
+
+footer
+{
+    color: #464646;
+    height: 10%;
+    width: 90%;
+    marging: 1.25%;
+    padding: 1.25%;
+    left: 0%;
+    bottom: 0%;
+}
+
+h1 {font-family: Helvetica, Arial; font-size: xx-large; font-weight: bold; text-align: center}
+h3 {font-family: Helvetica, Arial; font-size: large; font-weight: bold}
+p {font-family: Helvetica, Arial; font-size: small}
+th {font-family: Helvetica, Arial; font-size: large; font-weight: bold}
+td {font-family: Helvetica, Arial; font-size: medium}
+href {font-family: Helvetica, Arial; font-size: medium}
