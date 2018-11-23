@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        nav img {max-width: 100%}
+        header img {max-width: 100%}
+    </style>
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+    <link type="text/css" rel="stylesheet" media="all" href="BBH.css">
+    <script src="main.js"></script>
+    <script src="localstorage.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <title>BISHEE BARNABEE HOTEL</title>
+</head>
+
+<body>
+
+    <div id="header" class="header">
+        <img src="bishee_barnabee_logo.jpg" alt="bishee_barnabee_logo" style="float:left" width="220"/>
+        <h1>BISHEE BARNABEE HOTEL</h1> 
+    </div>
+
+    <div id="left_bar" class ="left_bar">
+        <h3 id="find_us">How To Find Us</h3>
+        <!SOME KIND OF GOOGLE MAPS SCRIPT>
+    </div>
+
+    <div id="right_bar" class="right_bar">
+        <h3 id="facilities">Facilities</h3>
+        <!SOME KIND OF SCRIPT THAT CYCLES BETWEEN DESCRIPTIONS OF GYM, BAR, RESTAURANT>
+    </div>
+
+    <div id="main_top_middle" class="main_top_middle">
+        <h3 id="booking_bar">Booking</h3>
+        <form name="BookingForm1">
+            <table>
+                <tr>
+                    <td>
+                        <h3>Room Type</h3>
+                        <input type="radio" value="D" name="RoomType" checked /><p>Double</p>
+                        <input type="radio" value="T" name="RoomType" /><p>Twin</p>
+                    </td>
+
+                    <td>
+                        <h3>Package</h3>
+                        <input type="radio" value="S" name="PackageType" checked /><p>Standard</p>
+                        <input type="radio" value="P" name="PackageType" /><p>Premium</p>
+                    </td>
+
+                    <td>
+                        <h3>Check-In Date</h3>
+                        <input type="date" name="CID" />
+                    </td>
+
+                    <td>
+                        <h3>Check-Out Date</h3>
+                        <input type="date" name="COD" />
+                    </td>
+
+                    <td>
+                        <h3>Check Availability</h3>
+                        <input type="button" value="Check Availability" id="check_availability" onclick="saveForm(); postAvailability('res')">
+                        <input type="button" value="Clear" id="clear">
+                    </td>
+                </tr>
+            </table>
+        </form>
+        <p id="result"></p>
+        <div/>
+
+        <div id="main_bottom_middle" class="main_bottom_middle">
+            <h3 id="about">About</h3>
+
+            <p>
+                The Bishee Barnabee Hotel (BBH) is a newly established independent hotel located on the western periphery of Norwich. 
+                The BBH is situated within walking distance of the commercial hub of the city, the hospital and the world-leading 
+                research park are nearby, facilitating all business needs and requirements.
+            </p>
+
+            <ul>
+                <li>Stay fit after a decadent night at our newly developed gym facility</li>
+                <li>Secure successful business deals in our meeting rooms</li>
+                <li>Have an unforgettable private event in our function rooms</li>
+                <li>Enjoy world class food in our Michelin star restaurant</li>
+            </ul>
+
+            <p>Nothing is off the table as far as we’re concerned. 
+                To cope with limited availability, we provide a dedicated online service to 
+                manage your bookings. 
+            </p>
+
+            <table id="room_info" class="info_table">
+                <th>Room Information</th>
+                <tr>
+                    <td>
+                        <h4>
+                            Double
+                        </h4>
+                    </td>
+                    <td>Twin</td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Our Double (19m²/204 sqft) room is perfect for couples and guests who like extra amenities. 
+                            Our double bed is developed with special memory foam uniquely designed for a therapeutic and comforting stay.
+                            Available from £65 per night.
+                        </p>
+                    </td>
+                    <td>
+                        <p>Our Twin-Sharers (23m²/2010 sqft) room is suited perfectly for the needs of two travellers. Each bed is equipped 
+                            specially designed luxurious memory foam to make every night you stay with us is the best sleep you will ever have.
+                            Available from £62 per night.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            <table id="package_info" class="info_table">
+                <th>Package Information</th>
+                <tr>
+                    <td>
+                        <h4>
+                            Standard
+                        </h4>
+                    </td>
+                    <td>
+                        <h4>
+                            Premium
+                        </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Our standard package is everything you need for a business trip or vacation: includes complimentary Wi-Fi and air-conditioning.
+                            En-suite shower and toilet. Available from £62 per night.
+                        </p>
+                    </td>
+                    <td><p>
+                            No indulgence is spared. Our premium package includes: Complimentary Wi-Fi, air-conditioning, Bang & Olufsen Television, 
+                            Apple TV. Kitchen: electric stove, toaster, ironing board. Luxury en-suite showering and toilet facilities.
+                            Available from £75 per night.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+            <table id="function_rooms_info" class="info_table">
+                <th>Function Rooms Information</th>
+                <tr>
+                    <td>
+                        <h4>
+                            Meeting Rooms
+                        </h4>
+                    </td>
+                    <td>
+                        <h4>
+                            Function Rooms
+                        </h4>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <p>
+                            Small Meeting Room 1: an intimate yet open space designed for small functions and parties (20-30 people).
+                            Medium Meeting Room 2: a larger space designed for conferences and office parties. This is your best option for 
+                            a Christmas party (30-50 people).
+                        </p>
+                    </td>
+                    <td>
+                        <p>
+                            The Bishee Barnabee Function room is the the biggest room in the Bishee Hotel complex. The large meeting room is best 
+                            suited for events like weddings 
+                            and large businesses conferences. Our dedicated kitchen staff will prepare a buffet for your guests and a full dining
+                            and entertainment experience is at your behest.
+                        </p>
+                    </td>
+                </tr>
+            </table>
+
+        </div>
+
+        <div id="footer" class="footer">
+            <h3 id="footer">Contact & Helpful Links</h3>
+            <table id="contact_and_links" class="info_table">
+                <tr>
+                    <td>Address: 1 Bishy Barnabee Way, Norwich, NR5 9HD</td>
+                    <td><a href="#facebook">Facebook</a></td>
+                </tr>
+                <tr>
+                    <td>Main Telephone: 01603 728 213</td>
+                    <td><a href="#twitter">Twitter</a></td>
+                </tr>
+                <tr>
+                    <td>Email: info@bisheebarnabeehotel.co.uk</td>    
+                    <td><a href="#instagram">Instagram</a></td>
+                </tr>
+            </table>
+        </div>
+</body>
+
+</html>
