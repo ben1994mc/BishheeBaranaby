@@ -4,22 +4,23 @@ Base styles
 
 body
 {
-	margin: 0;
+	margin: 0 auto;
 	padding: 0;
 	color: #333;
-	background-color: #eee;
-	font: 1em/1.2 "Helvetica Neue", Helvetica, Arial, Geneva, sans-serif;
+	background-color: #fff;
+	font: 1.4em/1.6 "Times New Roman", Times New Roman, Arial, Geneva, sans-serif;
 }
 
 h1,h2,h3,h4,h5,h6
-{
-	margin: 0 0 .5em;
+{ 
+	margin: 0 auto;
 	font-weight: 500;
-	line-height: 1.1;
+	line-height: 3.1;
+	
 }
 
-h1 { font-size: 2.25em; } /* 36px */
-h2 { font-size: 1.75em; } /* 28px */
+h1 { font-size: 4em; } /* 36px */
+h2 { font-size: 3em; } /* 28px */
 h3 { font-size: 1.375em; } /* 22px */
 h4 { font-size: 1.125em; } /* 18px */
 h5 { font-size: 1em; } /* 16px */
@@ -39,7 +40,7 @@ blockquote
 }
 
 hr
-{
+{	
 	height: 0;
 	margin-top: 1em;
 	margin-bottom: 2em;
@@ -49,6 +50,7 @@ hr
 
 table
 {
+	
 	background-color: transparent;
 	border-spacing: 0;
 	border-collapse: collapse;
@@ -75,22 +77,26 @@ Layout styles
 
 .container
 {
-	max-width: 50em;
+	max-width: 100em;
 	margin: 0 auto;
 }
 
 .header
-{
+{	
 	color: #fff;
-	background: #999;
-	padding: 1em 1.25em;
+	background: #228B22;
+	background-image: url("castle.jpg");
+	opacity: 30;
+	padding: 7em 1.25em;
 }
 
-.header-heading { margin: 0; }
+
+
+.header-heading { margin: 0 auto; }
 
 .nav-bar
 {
-	background: #000;
+	background: #;
 	padding: 0;
 }
 
@@ -107,12 +113,25 @@ Layout styles
 	padding: 1em 1.25em;
 }
 
+.column {
+  float: left;
+  width: 33.33%;
+  padding: 5px;
+}
+
+/* Clear floats after image containers */
+.row::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
 /* -----------------------
 Nav
 ------------------------*/
 
 .CheckAvailabilitybar
-{
+{	
 	margin: 0;
 	padding: 0;
 	list-style: none;
@@ -128,9 +147,9 @@ Nav
 {
 	display: block;
 	padding: .7em 1.25em;
-	color: #fff;
+	color: #ff0000;
 	text-decoration: none;
-	border-bottom: 1px solid gray;
+	border-bottom: 1px blue;
 }
 
 .CheckAvailabilitybar a:link { color: white; }
@@ -197,6 +216,7 @@ Single styles
 	background-color: red;
 }
 
+
 .table
 {
 	width: 100%;
@@ -230,9 +250,9 @@ Wide styles
 
 @media (min-width: 100%)
 {
-	.header { padding: 1.5em 3em; }
+	.header { padding: 1em 3em; }
 	.nav-bar { padding: 1em 3em; }
-	.content { padding: 2em 3em; }
+	.content { padding: 70em 60; }
 	.footer { padding: 2em 3em; }
 	
 	.nav li
