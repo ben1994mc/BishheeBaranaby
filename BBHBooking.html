@@ -67,11 +67,13 @@
 									<input type="radio" id="cardChoice3" name="cardtype" value="american">
 									<label for="cardChoice3">American Express</label>
 						
-                        <p>Name On Card</p><input type="text" id="nameoncard" size="30" placeholder="Name On Card">
-                        <p>Card Number</p><input type="text" id="cardno" size="16" placeholder="Enter A Card Number">
-                        <p>Expiry Date</p><input type="text" id="expirydate" size="5" placeholder="11/18">
-                        <p>Billing Address</p><input type="text" size="200" placeholder="Address">
-                        <p>Post Code</p><input type="text" size="7" placeholder="NR5 9HD">
+                        <p>Name On Card</p><input type="text" id="nameoncard" size="30" maxlength="30" placeholder="Name On Card">
+                        <p>Card Number</p><input type="text" id="cardno" size="16" maxlength="16" placeholder="Enter A Card Number">
+                        <p>Expiry Date</p><input type="text" id="expirydate" size="5" maxlength="5" placeholder="11/18">
+                        <p>Billing Address Line 1</p><input type="text" size="60" maxlength="60" placeholder="Address Line 1">
+						<p>Billing Address Line 2</p><input type="text" size="60" maxlength="60" placeholder="Address Line 2">
+						<p>Billing Address Line 3</p><input type="text" size="60" maxlength="60" placeholder="Address Line 3">
+                        <p>Post Code</p><input type="text" size="7" placeholder="NR5 9HD" maxlength="7" placeholder="NR4 7TJ">
                         <p> <input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveForm(); postPaymentInfo(&#39;paymentinforesult&#39;)"> </p>
                     </td>
                     
@@ -85,3 +87,15 @@
 
 
 </div></body></html>
+© 2018 GitHub, Inc.
+Terms
+Privacy
+Security
+Status
+Help
+Contact GitHub
+Pricing
+API
+Training
+Blog
+About
