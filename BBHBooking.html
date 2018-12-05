@@ -5,46 +5,51 @@
         nav img {max-width: 100%}
         header img {max-width: 100%}
     </style>
-    
-
-    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
-	<script src="localstorage.js"></script>
-	<script src="main.js"></script>
-	<link rel="stylesheet" href="BBHV4.css">
+        <meta charset="utf-8">
+		   <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+		   	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+			  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<script src="main.js"></script>
+			<script src="localstorage.js"></script>
     <title>BISHEE BARNABEE HOTEL</title>
+	<link rel="stylesheet" href="\\ueahome4\stusci1\qtb18yru\data\Documents\Internet & Multimedia Technologies\BBH Versions\new 2.css">
 	
 </head>
 
 <body>
 
     <div id="header" class="header">
-        <div class="container">
-		<h1 class="header-heading"><img class="img-responsive" src="file://ueahome4/stusci2/fru12hxu/data/Downloads/new.png" alt="Bishee Barnabee Hotel"></h1>
-        <h1>BISHEE BARNABEE HOTEL</h1> 
-    </div>
+            <div class="container">
+
+
+				<img class="img-responsive" src="new.png" alt="Bishee Barnabee Hotel">
+            </div>
 	</div>
 
     <div id="booking">
-        <h3 id="booking_bar">Booking</h3>
+        <h1 id="booking_bar">Booking</h1>
         <form name="paymentinfoform1">
 		<div class="container">
             <table>
-                <tbody><tr>
+                <tr>
                     <td>
-                        <h3>Booking Summary</h3>
+                        <h4>Booking Summary</h4>
                     </td>
                         
                     <td>
-                        <h3>Price Summary</h3>
+                        <h4>Price Summary</h4>
                     </td>
-                    
+					
+					<td>
+						<h4>Email Address</h4>   
+					</td>
                     <td>
-                        <h3>Payment Information</h3>
+                        <h4>Payment Information</h4>
                     </td>
-                    
-                    <td>
-                        
-                    </td>
+					<td>
+						<h4>Notes</h4>
+					</td>
                 </tr>
                 
                 <tr>
@@ -55,47 +60,93 @@
                     <td>
                         SOMETHING TO INSERT THE PRICES OF EACH OF THE INDIVIDUAL ROOMS AS A WELL AS A TOTAL COST
                     </td>
-                    
+                    <td>
+						<p>Email Address</p><input type="text" id="c_email" size="30" maxlength="60" placeholder="info@bisheebarnabeehotel.co.uk">
+					</td>
                     <td>
 					
 					
-					
-						<input type="radio" id="card1" name="cardtype" value="visa">
-									<label for="cardChoice1">VISA</label>
-									<input type="radio" id="contactChoice2" name="cardtype" value="master">
-									<label for="cardChoice2">Mastercard</label>
-									<input type="radio" id="cardChoice3" name="cardtype" value="american">
-									<label for="cardChoice3">American Express</label>
 						
-                        <p>Name On Card</p><input type="text" id="nameoncard" size="30" maxlength="30" placeholder="Name On Card">
-                        <p>Card Number</p><input type="text" id="cardno" size="16" maxlength="16" placeholder="Enter A Card Number">
-                        <p>Expiry Date</p><input type="text" id="expirydate" size="5" maxlength="5" placeholder="11/18">
-                        <p>Billing Address Line 1</p><input type="text" size="60" maxlength="60" placeholder="Address Line 1">
-						<p>Billing Address Line 2</p><input type="text" size="60" maxlength="60" placeholder="Address Line 2">
-						<p>Billing Address Line 3</p><input type="text" size="60" maxlength="60" placeholder="Address Line 3">
-                        <p>Post Code</p><input type="text" size="7" placeholder="NR5 9HD" maxlength="7" placeholder="NR4 7TJ">
-                        <p> <input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveForm(); postPaymentInfo(&#39;paymentinforesult&#39;)"> </p>
+						<p>Card Type</p>
+						<input type="radio" name="cardtype" value="V" class="rbtn">
+						<img class="img-responsive" src="visa.png" alt="visa">
+						<input type="radio" name="cardtype" value="MC" class="rbtn">
+						<img class="img-responsive" src="mastercard.png" alt="mastercard">
+						<input type="radio" name="cardtype" value="A" class="rbtn">
+						<img class="img-responsive" src="amex.png" alt="amex">
+						
+                        <p>Name On Card</p>
+						<input type="text" id="nameoncard" size="30" maxlength="30" placeholder="Name On Card">
+                        <p>Card Number</p>
+						<input type="text" id="cardno" size="16" maxlength="16" placeholder="Enter A Card Number">
+                        <p>Expiry Date</p>
+						<input type="text" id="expirydate" size="5" maxlength="5" placeholder="11/18">
+                        <p>Billing Address Line 1</p>
+						<input type="text" size="60" maxlength="60" placeholder="Address Line 1">
+						<p>Billing Address Line 2</p>
+						<input type="text" size="60" maxlength="60" placeholder="Address Line 2">
+						<p>Billing Address Line 3</p>
+						<input type="text" size="60" maxlength="60" placeholder="Address Line 3">
+                        <p>Post Code</p>
+						<input type="text" size="7" maxlength="7" placeholder="NR4 7TJ">
+                        <input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveForm(); postPaymentInfo(&#39;paymentinforesult&#39;)">
                     </td>
-                    
-                    <td> 
-                        
-                    </td>
+					<td>
+					<textarea name="notes" cols="60" rows="5" maxlength="300" placeholder="Extra information or requests about your stay"></textarea>
+					</td>
                 </tr>
-            </tbody></table>
+				
+				
+            </table>
+			
 			</div>
-        </form>
+			</form>
 
 
-</div></body></html>
-© 2018 GitHub, Inc.
-Terms
-Privacy
-Security
-Status
-Help
-Contact GitHub
-Pricing
-API
-Training
-Blog
-About
+</div>
+        <div class="footer">
+            <div class="container">
+			<h3>Contact</h3>
+				<table class="contacttable">
+					<tr>
+					<td>
+					<p>
+					Address
+					</p>
+					</td>
+					<td>
+					<p>
+					1 Bishee Barnabee Way, Norwich, NR4 3LB
+					</p>
+					</td>
+                    </tr>
+					<tr>
+					<td>
+					<p>
+					Telephone
+					</p>
+					</td>
+					<td>
+					<p>
+					01603 722 433
+					</p>
+					</td>
+                    </tr>
+					<tr>
+					<td>
+					<p>
+					Email
+					</p>
+					</td>
+					<td>
+					<p>
+					info@bisheebarnabeehotel.co.uk
+					</p>
+					</td>
+                    </tr>
+                </table>
+				<h3>&copy; Copyright Bishee Barnabee Hotel 2018</h3>
+            </div>
+        </div>
+
+</body></html>
