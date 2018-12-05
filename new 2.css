@@ -15,7 +15,6 @@ h1,h2,h3,h4,h5,h6
 { 
 	font-weight: 500;
 	line-height: 3.1;
-	
 }
 
 h1 { font-size: 3em; text-align: center;} /* 36px */
@@ -64,11 +63,6 @@ th, td
 	border-bottom: 1px solid #ddd;
 }
 
-a:link { color: royalblue; }
-a:visited { color: purple; }
-a:focus { color: black; }
-a:hover { color: green; }
-a:active { color: red; }
 
 /* -----------------------
 Layout styles
@@ -94,9 +88,6 @@ Layout styles
 	opacity: 30;
 	padding: 7em 1.25em;
 }
-
-
-
 
 .header-heading { margin: 0 auto; }
 
@@ -216,21 +207,28 @@ Single styles
 .btn:hover
 {
 	color: #fff !important;
-	background-color: lightblue;
+	background-color: #0085ff;
 }
 
 .btn:focus
 {
 	color: #fff !important;
-	background-color: black;
+	background-color: #00c5ff;
 }
 
 .btn:active
 {
 	color: #fff !important;
-	background-color: red;
+	background-color: #00c5ff;
 }
 
+.contacttable
+{
+	width: 100%;
+	max-width: 100%;
+	margin-left: 0;
+	
+}
 
 .table
 {
@@ -258,6 +256,8 @@ Single styles
 	padding-right: 5px;
 	padding-left: 5px;
 }
+
+
 
 /* -----------------------
 Wide styles
