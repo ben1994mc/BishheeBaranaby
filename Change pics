@@ -1,0 +1,17 @@
+	$( document ).ready(function() {
+	
+		var images =['back3.jpg', 'quayside.jpg'];
+    index  = 0;
+    $top   = $('.header');
+
+setInterval(function() {
+   $top.animate({ opacity: 0 }, 500, function() {
+     $top.css('background-image', 'url('+images[index]+')');
+	 index++;
+	 $top.animate({ opacity: 1 }, 500, function() {
+       if(index === images.length) index = 0;
+     });
+});
+}, 5000);
+	});
+	
