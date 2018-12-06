@@ -1,5 +1,386 @@
 <!DOCTYPE html>
-	<div class="header" id="headertext"> <h1> Welcome to my Website! </h1></div>
-	<div class="content" id="maintext"> This website contains lots of information</div>
-	<span class="content" id="aboutme"> about me</span> 
-	<div class="content" id="myinterestsclause"> and my interests</div>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+		   <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+		   	<script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+			  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+			<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
+			<script src="main.js"></script>
+			<script src="localstorage.js"></script>
+		
+        <title>BISHEE BARNABE HOTEL</title>
+
+
+
+        <!-- Override CSS file - add your own CSS rules -->
+	
+        <link rel="stylesheet" href="\\ueahome4\stusci1\qtb18yru\data\Documents\Internet & Multimedia Technologies\BBH Versions\new 2.css">
+		
+			
+
+
+    </head>
+    <body>
+        <div class="header">
+            <div class="container">
+
+
+				<img class="img-responsive" src="new.png" alt="Bishee Barnabee Hotel">
+            </div>
+        </div>
+        <div class="CheckAvailabilitybar">
+		<form>
+            <div class="container">
+			<table>
+                    <tr>
+                        <td>
+                            <h3>Room Type</h3>
+                        </td>
+
+                        <td>
+                            <h3>Package</h3>
+                        </td>
+
+                        <td>
+                            <h3>Check-In</h3>
+                        </td>
+
+                        <td>
+                            <h3>Check-Out</h3>
+                        </td>
+
+                        <td>
+                            <h3>Check Availability</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" value="D" name="RoomType" checked /><p>Double</p>
+                        </td>
+
+                        <td>
+                            <input type="radio" value="S" name="PackageType" checked /><p>Standard</p>
+                        </td>
+
+                        <td>
+                            <input type="date" name="CID" />
+                        </td>
+
+                        <td>
+                            <input type="date" name="COD" />
+                        </td>
+                        <td>
+                            <input type="button" value="Check Availability" id="check_availability" onclick="saveForm(); postAvailability('result', 'main_top_middle')" class="btn">
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="radio" value="T" name="RoomType" /><p>Twin</p>
+                        </td>
+
+                        <td>
+                            <input type="radio" value="P" name="PackageType" /><p>Premium</p>
+                        </td>
+
+                        <td>
+                        </td>
+                        <td>
+                        </td>
+
+                        <td>
+						<input type="reset" value="Clear" class="btn" id="reset_button">
+                        </td>
+                    </tr>
+                </table>
+
+                </form>
+            </div>
+        </div>
+        <div class="content">
+            <div class="container">
+                <div class="main">
+                    <h1>Welcome to The Bishee Barnabee</h1>
+                    <h2>About us</h2>
+                    <p> The Bishee Barnabee Hotel (BBH) is a newly established independent hotel located on the western periphery of Norwich, 
+
+                        within walking distance of the commercial hub of the city. The hospital and research park are nearby, facilitating all
+
+                        business needs and requirements. Accommodation comes in two basic forms: double or twin, supplemented with either a basic 
+
+                        package or premium facilities. Alongside this we provide a range of services to meet your needs. Come dine with us at the 
+
+                        fashionable Bishee Barnabee restaurant (BBR). Stay fit after a decadent night at our newly developed gym facility. 
+
+                        Nothing is off the table as far as we’re concerned. 
+
+                        We provide a dedicated online service to manage your bookings. Stay with us. You can stay as long as you like.
+                    </p>
+                    <hr>
+					
+                    <h3>Room packages </h3>
+                    <p>Book your rooms. We provide a premium service that includes</p>
+                    <ul>
+                        <li>Complementary Wi-Fi</li>
+                        <li>A Bang and Olufsen television</li>
+                        <li>The best views of the beautiful Norwich countryside</li>
+                        <li>An Electric Stove </li>
+                        <li>Luxury En-Suite Facilites and Molton Brown Toiletries</li>
+                        <li> A Mini-Bar including several spirits, mixers, wines, and beers</li>
+                    </ul>
+
+                    <p> or we provide a basic service that includes </p>
+                    <ul>
+                        <li> Complementary Wi-Fi</li>
+                        <li> An Electric Stove </li> 
+                        <li> Television Access </li>
+
+                        <hr>
+
+                        <h2>Room Types</h2>
+                        <p>Whether you are here for a functional stay or are looking for a lavish and indulgent experience, we can tailor to each and every need in the bespoke packages we have available.
+
+
+                        <h3>Package Information</h3>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h4>
+                                        Standard
+                                    </h4>
+                                </td>
+                                <td>
+                                    <h4>
+                                        Premium
+                                    </h4>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        Our standard package is everything you need for a business trip or vacation: includes complimentary Wi-Fi and air-conditioning.
+                                        En-suite shower and toilet. Available from £62 per night.
+                                    </p>
+                                </td>
+                                <td><p>
+                                        No indulgence is spared. Our premium package includes: Complimentary Wi-Fi, air-conditioning, Bang & Olufsen Television, 
+                                        Apple TV. Kitchen: electric stove, toaster, ironing board. Luxury en-suite showering and toilet facilities.
+                                        Available from £75 per night.
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+
+                        <h3>Room Information</h3>
+                        <p>You can choose either a single or double bed experience during your stay.</p>
+                        <table>
+                            <tr>
+                                <td>
+                                    <h3>
+                                        Double
+                                    </h3>
+                                </td>
+                                <td>	
+                                    <h3>
+                                        Twin
+                                    </h3>
+                                </td>	
+                            </tr>
+                            <tr>
+                                <td>
+                                    <img class="img-responsive" src="U:\Deluxe-Double.jpg" alt="">
+
+                                </td>
+                                <td>
+                                    <img class="img-responsive" src="U:\twin-room.jpg" alt="">
+                                </td>	
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        Our double rooms are first class including specially engineered memory foam mattresses for maximum comfort.
+                                        Available from £65 per night.
+                                    </p>
+                                </td>
+                                <td>
+                                    <p>
+                                        Our twin-rooms are for sharers but provide excellent privacy and comfort all at once.
+                                        Available from £62 per night.
+                                    </p>
+                                </td>
+                            </tr>
+                        </table>
+
+
+
+
+
+                        <h3>Facilities</h3>
+                        <p>Alongside our primary hotel service we also offer a restaurant experience, the opportunity to rent several function rooms, and an on-site gym .</p>
+						<div id="table">
+                        <table>
+                            <tr>
+                                <td>
+                                    <h3>
+                                        Bishee Barnabee Restaurant
+                                    </h3>
+                                </td>
+                                <td>
+                                    <h3>
+                                        Function Rooms
+                                    </h3>
+                                </td>
+                                <td>
+                                    <h3>
+                                        On-site Gym
+                                    </h3>
+                                </td>
+                            <tr>
+                            <tr>
+                                <td>
+                                    <img src="r.jpg" alt="Restaurant" style="width:100%">
+                                </td>
+                                <td>
+                                    <img src="f.jpg" alt="Function" style="width:100%">
+                                </td>
+                                <td>
+                                    <img src="g.jpg" alt="Gym" style="width:100%">
+                                </td>
+                            <tr>
+                            <tr>
+                                <td>
+                                    <p>
+                                        Alongside our hotel service we operate the Bishee Barnanbee restaurant and bar, which serves a range of cuisines to suit all dietary needs and palettes. Our new chef de cuisine Han Gong studied fine dining in Paris, where he was taught by the likes of Dan Smith and Rick Stein. 
+                                    </p>
+                                </td>
+                                <td>
+									<p>
+                                    The Dishee Barnabee Function room is the prime destination for any party, conference, or family event. Our dedicated kitchen staff will prepare a buffet for your guests and a full dining experience is at your behest. 
+                                    <ul>
+                                        <li>Small Meeting Room 1: (20-30 people)</li>
+                                        <li>Medium Meeting Room 2: (30-50 people)</li>
+                                        <li>Large Meeting Room 3: (up to 60 people)</li>
+                                    </ul>
+									</p>
+                                </td>
+                                <td>
+                                    <p>
+                                        A healthy body means a healthy mind. We want to provide our guests with the best customer service and experience. That’s why we open our gym to all guests. 
+                                        Our gym offers state of the art facilities including a cardiovascular area, freeweights and cables, and a range of resistance machines. 
+                                    </p>
+                                </td>
+                            <tr>
+                        </table>
+						</div>
+                </div>
+
+
+
+            </div>
+			
+        </div>
+		
+		
+		
+													<div class="container">
+											  <h2>Carousel Example</h2>
+											  <div id="myCarousel" class="carousel slide" data-ride="carousel">
+												<!-- Indicators -->
+												<ol class="carousel-indicators">
+												  <li data-target="#myCarousel" data-slide-to="0" class="active"></li>
+												  <li data-target="#myCarousel" data-slide-to="1"></li>
+												  <li data-target="#myCarousel" data-slide-to="2"></li>
+												</ol>
+
+												<!-- Wrapper for slides -->
+												<div class="carousel-inner">
+
+												  <div class="item active">
+													<img src="restaurant.jpg" alt="restaurant" style="width:100%;">
+													<div class="carousel-caption">
+													  <h3>Los Angeles</h3>
+													  <p>LA is always so much fun!</p>
+													</div>
+												  </div>
+
+												  <div class="item">
+													<img src="gym.jpg" alt="Chicago" style="width:100%;">
+													<div class="carousel-caption">
+													  <h3>Chicago</h3>
+													  <p>Thank you, Chicago!</p>
+													</div>
+												  </div>
+												
+												  <div class="item">
+													<img src="function.jpg" alt="New York" style="width:100%;">
+													<div class="carousel-caption">
+													  <h3>New York</h3>
+													  <p>We love the Big Apple!</p>
+        </div>
+      </div>
+  
+    </div>
+
+    <!-- Left and right controls -->
+    <a class="left carousel-control" href="#myCarousel" data-slide="prev">
+      <span class="glyphicon glyphicon-chevron-left"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="right carousel-control" href="#myCarousel" data-slide="next">
+      <span class="glyphicon glyphicon-chevron-right"></span>
+      <span class="sr-only">Next</span>
+    </a>
+  </div>
+</div>
+
+		
+		
+					
+							
+
+        <div class="footer">
+            <div class="container">
+			<h3>Contact</h3>
+				<table class="contacttable">
+					<tr>
+					<td>
+					<p>
+					Address
+					</p>
+					</td>
+					<td>
+					<p>
+					1 Bishee Barnabee Way, Norwich, NR4 3LB
+					</p>
+					</td>
+                    </tr>
+					<tr>
+					<td>
+					<p>
+					Telephone
+					</p>
+					</td>
+					<td>
+					<p>
+					01603 722 433
+					</p>
+					</td>
+                    </tr>
+					<tr>
+					<td>
+					<p>
+					Email
+					</p>
+					</td>
+					<td>
+					<p>
+					info@bisheebarnabeehotel.co.uk
+					</p>
+					</td>
+                    </tr>
+                </table>
+				<h4>&copy; Copyright Bishee Barnabee Hotel 2018</h3>
+            </div>
+        </div>
+    </body>
+</html>
