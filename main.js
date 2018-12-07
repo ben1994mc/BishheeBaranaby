@@ -88,26 +88,26 @@ function bookingSummary(data, disp_id) {
     {
         console.log('success1');
         $('#' + disp_id).append("Superior Double" + "<br/>");
-        $('#' + disp_id).append('<img src="Deluxe-Double.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append('<img src="Deluxe-Double.jpg" alt="Deluxe Double" style="width:50%">' + "<br/>");
 
     } else
     if (JSON.stringify(room).includes('sup_t'))
     {
         console.log('success2');
         $('#' + disp_id).append("Superior Twin" + "<br/>");
-        $('#' + disp_id).append('<img src="twinroom.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append('<img src="twin-room.jpg" alt="Twin Room" style="width:50%">' + "<br/>");
     } else
     if (JSON.stringify(room).includes('std_d'))
     {
         console.log('success3');
         $('#' + disp_id).append("Standard Double" + "<br/>");
-        $('#' + disp_id).append('<img src="double-standard.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append('<img src="double-standard.jpg" alt="Double Standard" style="width:50%">' + "<br/>");
     } else
     if (JSON.stringify(room).includes('std_t'))
     {
         console.log('success4');
         $('#' + disp_id).append("Standard Twin" + "<br/>");
-        $('#' + disp_id).append('<img src="twin-standard.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append('<img src="twin-standard.jpg" alt="Twin Standard" style="width:50%">' + "<br/>");
 
     }
     $('#' + disp_id).append("From:" + "<br/>");
@@ -136,7 +136,7 @@ function post(path, data, disp_id) {
 
     var booking = '"bookingSUM"';
     var price = '"price"';
-    var booking_page = "<input type='button' value='Proceed to Booking' onclick='hidemain(); showbooking(); postSummary(" + booking + "); post_total(" + price + ")'>";
+    var booking_page = "<div class='container'><input type='button' value='Proceed to Booking' class='btn' onclick='hidemain(); showbooking(); postSummary(" + booking + "); post_total(" + price + ")'></div>";
 
 
     $.ajax({
@@ -265,8 +265,9 @@ function post_price(path, data, disp_id) {
             var pricequotes = pricefull.split('"');
             var depositfull = Number(pricequotes[3]);
             var deposit = depositfull / 10;
+            var depositCurrency = deposit.toFixed(2);
             $('#' + disp_id).append('£' + pricequotes[3] + "</br>");
-            $('#' + disp_id).append('The amount to pay now is: ' + '£' + deposit);
+            $('#' + disp_id).append('The amount to pay now is: ' + '£' + depositCurrency);
         },
         error: function () {
             alert("there's a problem");
@@ -287,7 +288,7 @@ function confirmation(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+    var printButton = "<input type='button' value='Print Booking Confirmation' class='btn' onClick='window.print()'>";
 
 
     $.ajax({
@@ -304,6 +305,7 @@ function confirmation(path, data, disp_id) {
             var name2 = name.split('"');
 
             $('#' + disp_id).append(name2[5] + "</br>");
+            $('#' + disp_id).append(printButton);
 
             post_confirmation_B('confirmation');
 
@@ -347,7 +349,7 @@ function confirmation_B(path, data, disp_id) {
 
 $(document).ready(function () {
 
-    var images = ['back3.jpg', 'quayside.jpg'];
+    var images = ['back3.jpg', 'quayside.jpg', 'norwichsky.jpg'];
     index = 0;
     $top = $('.header');
 
