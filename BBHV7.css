@@ -51,6 +51,12 @@ blockquote
     border-left: 5px solid #eee;
 }
 
+a
+{
+    color: #333;
+    text-decoration: none;
+}
+
 hr
 {	
     height: 0;
@@ -81,7 +87,6 @@ th, td
 {
     max-width: 100em;
     margin: 0 auto;
-    float: center;
 }
 
 .header
@@ -102,9 +107,14 @@ th, td
 {
     padding: 1em 1.25em;
     background-image: url("backgroundimage1.jpg");
-    background-size:     100%;  
+    background-size:     130%;  
     background-repeat:   no-repeat;
     background-position: center center; 
+}
+
+.smalllink
+{
+    text-decoration: underline;
 }
 
 .footer
@@ -114,59 +124,18 @@ th, td
     padding: 1em 1.25em;
 }
 
-.column {
-    float: left;
-    width: 33.33%;
-    padding: 5px;
-}
-
-.row::after {
-    content: "";
-    clear: both;
-    display: table;
-}
-
 .CheckAvailabilitybar
 {	
     margin-left: auto;
     padding: 0;
     list-style: none;
     margin: auto;
-}
-
-.CheckAvailabilitybar
-{
     display: inline;
-    margin: auto;
 }
 
-.CheckAvailabilitybar a
+.facilitiespic
 {
-    display: block;
-    padding: .7em 1.25em;
-    color: #ff0000;
-    text-decoration: none;
-    border-bottom: 1px blue;
-}
-
-.CheckAvailabilitybar a:link { color: white; }
-.CheckAvailabilitybar a:visited { color: white; }
-.CheckAvailabilitybar a:focus
-{
-    color: black;
-    background-color: white;
-}
-
-.CheckAvailabilitybar a:hover
-{
-    color: white;
-    background-color: green;
-}
-
-.CheckAvailabilitybar a:active
-{
-    color: white;
-    background-color: red;
+    max-width: 100%;
 }
 
 .img-responsive { max-width: 70%; }
@@ -190,10 +159,6 @@ th, td
     text-decoration: none;
 }
 
-.mySlides {
-    display: none
-}
-
 .btn:hover
 {
     color: #fff !important;
@@ -214,10 +179,112 @@ th, td
 
 .contacttable
 {
+   table-layout: fixed;
     width: 100%;
     max-width: 100%;
-    margin-left: 0;
+    margin: auto;
+    td
+    {
+       width: 50%; 
+    }
+}
 
+.navtable
+{
+    table-layout: fixed;
+    width: 80%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 17%; 
+    }
+}
+
+.roompackagestable
+{
+   table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 50%; 
+    }
+}
+
+.roompic
+{
+    max-width: 100%;
+}
+
+.maptable
+{
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 100%;
+       max-height: 100%;
+    }
+}
+
+.modifybookingtable
+{
+   table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 50%; 
+    }
+}
+
+.iframe
+{
+    width: 100%;
+    height: 20em;
+    max-width: 100%;
+    max-height: 40%;
+}
+
+.aboutustable
+{
+   table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 50%; 
+    }
+}
+
+.checkavailabilitytable
+{
+    table-layout: fixed;
+    width: 70%;
+    max-width: 70%;
+    margin: auto;
+    td
+    {
+       width: 20%; 
+    }
+}
+
+.roominformationtable
+{
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 50%; 
+    }
 }
 
 .table
@@ -229,6 +296,7 @@ th, td
 
 .facilitiestable
 {
+    table-layout: fixed;
     width: 100%;
     max-width: 100%;
     margin: auto;
@@ -238,8 +306,33 @@ th, td
     }
 }
 
+.checkintable
+{
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 50%; 
+    }
+}
+
+.checkouttable
+{
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 17%; 
+    }
+}
+
 .bookinginformationtable
 {
+    table-layout: fixed;
     width: 100%;
     max-width: 100%;
     margin: auto;
@@ -249,24 +342,16 @@ th, td
     }
 }
 
-.list-unstyled
+.maintenancetable
 {
-    padding-left: 0;
-    list-style: none;
-}
-
-.list-inline
-{
-    padding-left: 0;
-    margin-left: -5px;
-    list-style: none;
-}
-
-.list-inline > li
-{
-    display: inline-block;
-    padding-right: 5px;
-    padding-left: 5px;
+    table-layout: fixed;
+    width: 100%;
+    max-width: 100%;
+    margin: auto;
+    td
+    {
+       width: 25%; 
+    }
 }
 
 @media (min-width: 100%)
@@ -275,28 +360,4 @@ th, td
     .nav-bar { padding: 1em 3em; }
     .content { padding: 70em 60; }
     .footer { padding: 2em 3em; }
-
-    .nav li
-    {
-        display: inline;
-        margin: 0 1em 0 0;
-    }
-
-    .nav a
-    {
-        display: inline;
-        padding: 0;
-        border-bottom: 0;
-    }
-    
-    @media print {
-
-
-    }        
-        
-        
-        
-        
-        
-    
 }

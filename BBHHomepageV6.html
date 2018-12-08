@@ -9,18 +9,20 @@
         <script src="main.js"></script>
         <script src="localstorage.js"></script>
         <title>Welcome to The Bishee Barnabee Hotel</title>
-        <link rel="stylesheet" href="BBHV6.css">
+        <link rel="stylesheet" href="BBHV7.css">
         <link rel="icon" href="LogoNoWords.png">
     </head>
 
     <body>
-        <div id="main" class="main">
+        
             <div class="header">
                 <div class="container">
                     <img class="logo" src="BBHLogo2Resize.jpg" alt="Bishee Barnabee Hotel">
                 </div>
             </div>
-
+        
+        <div id="main" class="main">
+            
             <div id="CheckAvailabilitybar" class="CheckAvailabilitybar">
                 <form>
                     <div id="availability" class="container">
@@ -275,10 +277,10 @@
                                     <h3>Payment Information</h3>
                                 </td>
                                 <td>
-                                    &nbsp;
+                                    <h3>Enter Details Here</h3>
                                 </td>
                                 <td>
-                                    &nbsp;
+                                    <h3>Your Confirmation Will Appear Here:-</h3>
                                 </td>
                             </tr>
                             <tr>
@@ -315,12 +317,27 @@
                                     <p><input type="text" id="thirdline" size="20" maxlength="60" placeholder="Address Line 3"></p>
                                     <p><input type="text" size="7" id="postcode" maxlength="7" placeholder="NR4 7TJ"></p>
                                     <p><textarea name="notes" id="notes" cols="30" rows="5" maxlength="300" placeholder="Extra information or requests about your stay (dietary requirements, disabilities, etc.)"></textarea></p>
+                                </td>
+                                <td>
+                                    <div id="confirmation"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                     &nbsp;
+                                </td>
+                                <td>
+                                     &nbsp;
+                                </td>
+                                <td>
+                                     &nbsp;
+                                </td>
+                                <td>
                                     <input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveCustomer(); post_confirmation('confirmation');">
                                     <input type="reset" value="Clear" class="btn" id="reset_button">
                                 </td>
                                 <td>
-                                    <div id="confirmation"></div>
-                                    <input type="button" value="Back to Check Availability" class="btn" onClick="window.location.reload()">
+                                <input type="button" value="Back to Check Availability" class="btn" onClick="window.location.reload()">
                                 </td>
                             </tr>
                         </table>

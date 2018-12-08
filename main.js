@@ -87,32 +87,32 @@ function bookingSummary(data, disp_id) {
     if (JSON.stringify(room).includes('sup_d'))
     {
         console.log('success1');
-        $('#' + disp_id).append("Superior Double" + "<br/>");
-        $('#' + disp_id).append('<img src="Deluxe-Double.jpg" alt="Deluxe Double" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append("Premium Double" + "<br>");
+        $('#' + disp_id).append("<img src='premiumdoublesmall.jpg' alt='premiumdoublesmall'>");
 
     } else
     if (JSON.stringify(room).includes('sup_t'))
     {
         console.log('success2');
-        $('#' + disp_id).append("Superior Twin" + "<br/>");
-        $('#' + disp_id).append('<img src="twin-room.jpg" alt="Twin Room" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append("Premium Twin" + "<br>");
+        $('#' + disp_id).append("<img src='premiumtwinsmall.jpg' alt='premiumtwinsmall'>");
     } else
     if (JSON.stringify(room).includes('std_d'))
     {
         console.log('success3');
-        $('#' + disp_id).append("Standard Double" + "<br/>");
-        $('#' + disp_id).append('<img src="double-standard.jpg" alt="Double Standard" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append("Standard Double" + "<br>");
+        $('#' + disp_id).append("<img src='standarddoublesmall.jpg' alt='standarddoublesmall'>");
     } else
     if (JSON.stringify(room).includes('std_t'))
     {
         console.log('success4');
-        $('#' + disp_id).append("Standard Twin" + "<br/>");
-        $('#' + disp_id).append('<img src="twin-standard.jpg" alt="Twin Standard" style="width:50%">' + "<br/>");
+        $('#' + disp_id).append("Standard Twin" + "<br>");
+        $('#' + disp_id).append("<img src='standardtwinsmall.jpg' alt='standardtwinsmall'>");
 
     }
-    $('#' + disp_id).append("From:" + "<br/>");
+    $('#' + disp_id).append("<br>" + "From:" + "<br>");
     $('#' + disp_id).append(data.CID + "<br/>");
-    $('#' + disp_id).append("To:" + "<br/>");
+    $('#' + disp_id).append("<br>" + "To:" + "<br/>");
     $('#' + disp_id).append(data.COD + "<br/>");
 }
 
@@ -136,8 +136,7 @@ function post(path, data, disp_id) {
 
     var booking = '"bookingSUM"';
     var price = '"price"';
-    var booking_page = "<div class='container'><input type='button' value='Proceed to Booking' class='btn' onclick='hidemain(); showbooking(); postSummary(" + booking + "); post_total(" + price + ")'></div>";
-
+    var booking_page = "<table id='proceedtobooking' class='proceedtobooking'><tr><td><h3>Rooms Available:</h3></td><td><h3><div class='container'><input type='button' value='Proceed to Booking' class='btn' onclick='hidemain(); showbooking(); postSummary(" + booking + "); post_total(" + price + ")'></div></h3></td></tr></table>";
 
     $.ajax({
         url: path,
@@ -149,9 +148,6 @@ function post(path, data, disp_id) {
 
             if (json.length > 0) {
                 $('#' + disp_id).empty();
-
-                $('#' + disp_id).append("<h3>Rooms are available!</h3>");
-                $('#' + disp_id).append("<h5>Would you like to book now?</h5>");
                 $('#' + disp_id).append(booking_page);
             }
             if (json.length < 1) {
@@ -186,43 +182,29 @@ function no_rooms(path, data, disp_id) {
         success: function (rt) {
             console.log(rt); // returned data
             var json = JSON.parse(rt); // the returned data will be an array
-
             $('#' + disp_id).empty;
             if (json.length > 0) {
-
-
-                $('#' + disp_id).append("<h3>Sorry, we have no available rooms of that type for that date</h3>");
-                $('#' + disp_id).append("<h4>However, rooms of the following type are available:</h4>");
-
+                $('#' + disp_id).append("<table id='sorryno' class='sorryno'><tr><td><h3>Sorry, no rooms of that type are available for those dates</h3></tr>\n\
+                                        <tr><td><h3>However, room(s) of the following type(s) are available:</h3></td></tr></table>");
                 $.each(json, function (i, val) {
                     console.log(val);
                     if (JSON.stringify(val).includes('sup_d'))
                     {
-                        val =
-                                $('#' + disp_id).append('Superior Double' + "<br/>");
-                        $('#' + disp_id).append('<img src="Deluxe-Double.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+                        $('#' + disp_id).append("<table id='supdtable' class='supdtable'><tr><td><h3>Premium Double:</h3></td></tr><tr><td><img src='premiumdouble.jpg' alt='premiumdouble'></td></tr></table>");
                     } else
                     if (JSON.stringify(val).includes('sup_t'))
                     {
-
-                        $('#' + disp_id).append('Superior Twin' + "<br/>");
-                        $('#' + disp_id).append('<img src="twinroom.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+                        $('#' + disp_id).append("<table id='supttable' class='supttable'><tr><td><h3>Premium Twin:</h3></td></tr><tr><td><img src='premiumtwin.jpg' alt='premiumtwin'></td></tr></table>");
                     } else
                     if (JSON.stringify(val).includes('std_t'))
                     {
-
-                        $('#' + disp_id).append('Standard Twin' + "<br/>");
-                        $('#' + disp_id).append('<img src="twin-standard.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+                        $('#' + disp_id).append("<table id='stdttable' class='supttable'><tr><td><h3>Standard Twin:</h3></td></tr><tr><td><img src='standardtwin.jpg' alt='premiumtwin'></td></tr></table>");
                     } else
                     if (JSON.stringify(val).includes('std_d'))
                     {
-
-                        $('#' + disp_id).append('Standard Double' + "<br/>");
-                        $('#' + disp_id).append('<img src="double-standard.jpg" alt="Restaurant" style="width:50%">' + "<br/>");
+                        $('#' + disp_id).append("<table id='stddtable' class='supttable'><tr><td><h3>Standard Double:</h3></td></tr><tr><td><img src='standarddouble.jpg' alt='standarddouble'></td></tr></table>");
                     }
-
-
-                })
+                });
 
             }
 
