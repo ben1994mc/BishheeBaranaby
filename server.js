@@ -235,7 +235,7 @@ var http = require('http');
                         const values = [room, json.COD, json.CID];
                         const res1 = await client.query(text, values);
                         const text2 = "INSERT INTO hotelbooking.roombooking (r_no, b_ref, checkin, checkout)"
-                        + " VALUES((SELECT (SELECT room.r_no FROM hotelbooking.room ORDER BY RANDOM() LIMIT 1)"
+                        + " VALUES((SELECT DISTINCT (SELECT (SELECT room.r_no FROM hotelbooking.room ORDER BY RANDOM() LIMIT 1)"
                         + " FROM hotelbooking.roombooking"
                         + " RIGHT JOIN hotelbooking.room"
                         + " ON room.r_no = roombooking.r_no"
@@ -246,7 +246,7 @@ var http = require('http');
                         + " ON room.r_no = roombooking.r_no"
                         + " WHERE checkin >= CAST($2 AS DATE)"
                         + " AND checkout <= CAST($3 AS DATE))"
-                        + " ORDER BY r_no), (SELECT COALESCE(MAX(b_ref),0) FROM hotelbooking.booking), CAST($2 AS DATE), CAST($3 AS DATE))"
+                        + " ORDER BY r_no) FROM hotelbooking.room), (SELECT COALESCE(MAX(b_ref),0) FROM hotelbooking.booking), CAST($2 AS DATE), CAST($3 AS DATE))"
 
                         const values2 = [room, json.CID, json.COD];
                         console.log(text2, values2)
@@ -254,7 +254,7 @@ var http = require('http');
                         const res2 = await client.query(text2, values2);
                         // after the insertion, we return the complete table.
 
-                        const res3 = await client.query('SELECT * FROM hotelbooking.roombooking WHERE roombooking.b_ref = (SELECT COALESCE(MAX(b_ref),0) FROM hotelbooking.booking)')
+                        const res3 = await client.query('SELECT roombooking.b_ref FROM hotelbooking.roombooking WHERE roombooking.b_ref = (SELECT COALESCE(MAX(b_ref),0) FROM hotelbooking.booking)')
 
                         await client.end();
                         json = res3.rows;
