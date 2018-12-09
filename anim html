@@ -1,0 +1,36 @@
+<p id="cf7_controls">
+													
+													  <span class="selected"> Basic double </span>
+													  <span>Premium double room</span>
+													  <span>Basic twin</span>
+													  <span>Premium twin 4</span>
+													</p>
+									
+														<div id="cf7" class="shadow">
+													  <img class='opaque' src="reception.jpg">
+													  <img src="gym.jpg">
+													  <img src="norwichsky.jpg">
+													  <img src="r.jpg">
+													</div>
+                          
+                          
+                          
+                          
+                          
+                          
+                          
+                              <div class="clicker" id= "clicker2"> </div> 
+                              
+                              
+                              
+                              
+                              
+                              
+                              
+                              	<div id="cf2" class="shadow">
+									  <img class="bottom" src="reception.jpg" />
+									  <img class="top" src="reception2.jpg" />
+									  
+									</div>
+									<p id="cf_onclick">View our library</p>
+									
