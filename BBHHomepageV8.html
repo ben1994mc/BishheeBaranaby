@@ -8,7 +8,7 @@
         <script src="main.js"></script>
         <script src="localstorage.js"></script>
         <title>Welcome to The Bishee Barnabee Hotel</title>
-        <link rel="stylesheet" href="BBHV7.css">
+        <link rel="stylesheet" href="BBHV8.css">
         <link rel="icon" href="LogoNoWords.png">
     </head>
 
@@ -112,8 +112,8 @@
 
             <div class="content">
                 <div class="container">
+                    <h2 id="aboutus">About Us</h2>
                     <table id="aboutustable" class="aboutustable">
-                        <th><h2 id="aboutus">About Us</h2></th>
                         <tr>
                             <td>
                                 <p> The Bishee Barnabee Hotel (BBH) is a newly established independent hotel located on the western periphery of Norwich. 
@@ -142,16 +142,16 @@
                             </td>
                             <td>
                                 <div id="cf7" class="shadow">
-                                    <img class='opaque' src="reception2.jpg" class='roompic'>
-                                    <img src="reception.jpg" class='roompic'>
-                                    <img src="diningroom.jpg" class='roompic'>
-                                    <img src="mainfunctionroom.jpg" class='roompic'>
+                                    <img class='opaque' src="reception2.jpg" alt="reception2">
+                                    <img src="reception.jpg" class='roompic' alt="reception">
+                                    <img src="diningroom.jpg" class='roompic' alt="diningroom">
+                                    <img src="mainfunctionroom.jpg" class='roompic' alt="mainfunctionroom">
                                 </div>
                             </td>
                         </tr>
                         <tr>
                             <td>
-                                    <img src="reception3.jpg" class='roompic' alt="reception3">
+                                <img src="reception3.jpg" class='roompic' alt="reception3">
                             </td>
                             <td>
                                 <p>
@@ -168,8 +168,8 @@
 
                     <hr>
 
+                    <h2 id="packages">Packages</h2>
                     <table id="roompackagestable" class="roompackagestable">
-                        <th><h2 id="packages">Packages</h2></th>
                         <tr>
                             <td>
                                 <p>Whether you're looking for a premium experience or just a comfortable stay, we've got the perfect package for you </p>
@@ -216,18 +216,18 @@
                         </tr>
                         <tr>
                             <td>
-                                <img src="premiumroom.jpg" alt="reception2" class="roompic" id="roompic">
+                                <img src="premiumroom.jpg" alt="reception2" class="roompic">
                             </td>
                             <td>
-                                <img src="standardroom.jpg" alt="reception2" class="roompic" id="roompic">
+                                <img src="standardroom.jpg" alt="reception2" class="roompic">
                             </td>
                         </tr> 
                     </table>
 
                     <hr>
 
+                    <h2 id="roominfo">Room Info</h2>
                     <table id="roominformationtable" class="roominformationtable">
-                        <th><h2 id="roominfo">Room Info</h2></th>
                         <tr>
                             <td>
                                 <p>Families, couples, or business partners, we have the room for you! </p>
@@ -250,10 +250,10 @@
                         </tr>
                         <tr>
                             <td>
-                                <img id="roompic" class="roompic" src="doubleroom.jpg" alt="doubleroom">
+                                <img class="roompic" src="doubleroom.jpg" alt="doubleroom">
                             </td>
                             <td>
-                                <img id="roompic" class="roompic" src="twinroom.jpg" alt="twinroom">
+                                <img class="roompic" src="twinroom.jpg" alt="twinroom">
                             </td>	
                         </tr>
                         <tr>
@@ -274,8 +274,8 @@
 
                     <hr>
 
+                    <h2 id="facilities">Facilities</h2>
                     <table id="facilitiestable" class="facilitiestable">
-                        <th><h2 id="facilities">Facilities</h2></th>
                         <tr>
                             <td>
                                 <h3>
@@ -295,13 +295,13 @@
                         </tr>
                         <tr>
                             <td>
-                                <img id="facilitiespic" class="facilitiespic" src="r.jpg" alt="Restaurant">
+                                <img class="facilitiespic" src="r.jpg" alt="Restaurant">
                             </td>
                             <td>
-                                <img id="facilitiespic" class="facilitiespic" src="f.jpg" alt="Function">
+                                <img class="facilitiespic" src="f.jpg" alt="Function">
                             </td>
                             <td>
-                                <img id="facilitiespic" class="facilitiespic" src="g.jpg" alt="Gym">
+                                <img class="facilitiespic" src="g.jpg" alt="Gym">
                             </td>
                         </tr>
                         <tr>
@@ -330,10 +330,9 @@
                     </table>
                     <hr>
 
+                    <h2 id="modifybooking">Modify Booking</h2>
                     <form name="modifybooking1">
                         <table id="modifybookingtable" class="modifybookingtable">
-                            <th><h2 id="modifybooking">Modify Booking</h2></th>
-                            <tr>
                             <tr>
                                 <td>
                                     <p>Need to modify your booking? Enter your booking info. </p>
@@ -353,7 +352,7 @@
                                     <p>Booking Reference Number: </p>
                                 </td>
                                 <td>
-                                    <input type="text" size="30" id="bookingreferencenumber" maxlength="5" placeholder="12345">
+                                    <input type="text" size="30" maxlength="5" placeholder="12345">
                                 </td>    
                                 <td>
                                     <input type="button" value="Modify Booking" id="modify_booking" class="btn" onclick="saveForm();">
@@ -370,7 +369,7 @@
                                     <input type="text" size="30" id="bookingreferencenumber" maxlength="60" placeholder="info@bisheebarnabeehotel.co.uk">
                                 </td>
                                 <td>
-                                    <input type="reset" value="Clear" class="btn" id="reset_button">
+                                    <input type="reset" value="Clear" class="btn">
                                 </td>
                                 <td>
                                     &nbsp;
@@ -457,7 +456,7 @@
                                 </td>
                                 <td>
                                     <input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveCustomer(); post_confirmation('confirmation');">
-                                    <input type="reset" value="Clear" class="btn" id="reset_button">
+                                    <input type="reset" value="Clear" class="btn">
                                 </td>
                                 <td>
                                     <input type="button" value="Back to Check Availability" class="btn" onClick="window.location.reload()">
@@ -497,7 +496,7 @@
                     <tr>
                         <td>
                             <p>
-                                &copy; Copyright 2018 <a target="_blank" title="follow me on facebook" href="https://www.facebook.com/Bishee-Barnabee-2594848893889425"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a> <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a> <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a><a target="_blank" title="follow me on pinterest" href="https://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0></a>
+                                &copy; Copyright 2018 <a target="_blank" title="follow me on facebook" href="https://www.facebook.com/Bishee-Barnabee-2594848893889425"> <img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png"</a> <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png"></a> <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png"></a><a target="_blank" title="follow me on pinterest" href="https://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png"></a>
                             </p>
                         </td>
                     </tr>

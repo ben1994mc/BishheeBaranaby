@@ -101,7 +101,7 @@ function booking_Details(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+     $('#' + disp_id).empty;
     $.ajax({
         url: path,
         type: "POST",
@@ -109,14 +109,17 @@ function booking_Details(path, data, disp_id) {
         success: function (rt) {
             console.log(rt); // returned data
                var json = JSON.parse(rt);
+            var i = 0;
+            var balance;
             $.each(json, function (i, val) {
+                i++;
             // the returned data will be an array
             var test = JSON.stringify(val)
             var details = test.split(':');
             var details2 = test.split('"');
             var cno = parseFloat(details[2])  
             var rno = parseFloat(details[3])
-            var balance = parseFloat(details2[11])
+            balance = parseFloat(details2[11])
             var chi = details2[15].split('T');
             var cho = details2[19].split('T');
             console.log(chi);
@@ -125,13 +128,15 @@ function booking_Details(path, data, disp_id) {
             console.log(details);
              console.log(details2);
             console.log(cno);
-            $('#' + disp_id).append("</br> Customer Name:   "+details2[3]);
-            $('#' + disp_id).append("</br> Customer Number: "+cno);
-            $('#' + disp_id).append("</br> Room Number:   "+rno);
-             $('#' + disp_id).append("</br> Balance Outstanding:   £"+balance);
-             $('#' + disp_id).append("</br> Checkin Date:   "+chi[0]);
-             $('#' + disp_id).append("</br> Checkout Date:   "+cho[0]);
-              })
+            $('#' + disp_id).append("<br> Booking " +i+"<br>");
+            $('#' + disp_id).append("<br> Customer Name:   "+details2[3]+"<br>");
+            $('#' + disp_id).append("<br> Customer Number: "+cno+"<br>");
+            $('#' + disp_id).append("<br> Room Number:   "+rno+"<br>");
+            
+             $('#' + disp_id).append("<br> Checkin Date:   "+chi[0]+"<br>");
+             $('#' + disp_id).append("<br> Checkout Date:   "+cho[0]+"<br>");
+              }) 
+              $('#' + disp_id).append("<br> Balance Outstanding:   £"+balance);
         },
         error: function () {
             alert("there's a problem");
@@ -149,7 +154,7 @@ function check_inguest(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+     $('#' + disp_id).empty;
     $.ajax({
         url: path,
         type: "POST",
@@ -158,7 +163,7 @@ function check_inguest(path, data, disp_id) {
             console.log(rt); // returned data
                var json = JSON.parse(rt);
                
-               $('#' + disp_id).append("</br>Checkin Complete");
+               $('#' + disp_id).append("<br>Checkin Complete");
             
         },
         error: function () {
@@ -176,7 +181,7 @@ function add_supplements(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+     $('#' + disp_id).empty;
     $.ajax({
         url: path,
         type: "POST",
@@ -191,8 +196,8 @@ function add_supplements(path, data, disp_id) {
                console.log(bal2);
                var bal3 = bal2[3];
                
-               $('#' + disp_id).append("</br>Charges Applied");
-               $('#' + disp_id).append("</br>Outstanding balance is: ");
+               $('#' + disp_id).append("<br>Charges Applied");
+               $('#' + disp_id).append("<br>Outstanding balance is: ");
                $('#' + disp_id).append('£'+bal3);
                
             
@@ -212,7 +217,7 @@ function pay(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+     $('#' + disp_id).empty;
     $.ajax({
         url: path,
         type: "POST",
@@ -222,7 +227,7 @@ function pay(path, data, disp_id) {
                var json = JSON.parse(rt);
                             
                
-               $('#' + disp_id).append("</br>Payment Successful");              
+               $('#' + disp_id).append("<br>Payment Successful");              
             
         },
         error: function () {
@@ -240,7 +245,7 @@ function Status(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+     $('#' + disp_id).empty;
     $.ajax({
         url: path,
         type: "POST",
@@ -250,7 +255,42 @@ function Status(path, data, disp_id) {
                var json = JSON.parse(rt);
                             
                
-               $('#' + disp_id).append("</br>Status Changed");              
+               $('#' + disp_id).append("<br>Status Changed");              
+            
+        },
+        error: function () {
+            alert("there's a problem");
+        }
+    });
+}
+function tasks(disp_id){
+     var storedData;
+    storedData = getObject('roomStatus');
+    show_tasks('http://localhost:8081/show_tasks', storedData, disp_id);
+};
+
+function show_tasks(path, data, disp_id) {
+
+    // convert the parameters to a JSON data string
+    var json = JSON.stringify(data);
+     $('#' + disp_id).empty;
+    $.ajax({
+        url: path,
+        type: "POST",
+        data: json,
+        success: function (rt) {
+            console.log(rt); // returned data
+               var json = JSON.parse(rt);
+                            
+               $('#' + disp_id).append('<br> Rooms To Be Cleaned');
+                $.each(json, function (i, val) {
+                    var room_no = JSON.stringify(val);
+                    var room = room_no.split(':');
+                    var roomNo = parseFloat(room[1])
+                    console.log(room);
+                    $('#' + disp_id).append('<br> Room: ' + roomNo);   
+                    
+                })             
             
         },
         error: function () {

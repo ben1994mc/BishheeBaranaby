@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<head>
+    <style>
+        nav img {max-width: 100%}
+        header img {max-width: 100%}
+    </style>
+    <meta http-equiv="Content-type" content="text/html;charset=utf-8" />
+    <link rel="icon" href="LogoNoWords.png">
+    <link rel="stylesheet" href="BBHV8.css">
+    <script src="main2.js"></script>
+    <script src="localstorage.js"></script>
+    <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+    <link rel="icon" href="LogoNoWords.png">
+    <title>BBH Staff Page</title>
+</head>
+
+<body>
+
+    <div id="header" class="header">
+        <img class="logo" src="BBHLogo2Resize.jpg" alt="Bishee Barnabee Hotel">
+    </div>
+
+    <div id="navbar" class="navbar">
+        <h1>BBH Staff Page</h1>
+        <table id="navtable" class="navtable">
+            <tr>
+                <td>
+                    <a href="#checkin"><h2>Check Guests In</h2></a>
+                </td>
+                <td>
+                    <a href="#checkout"><h2>Check Guests Out</h2></a>
+                </td>
+                <td>
+                    <a href="#maintenance"><h2>Maintenance Tasks & Status</h2></a>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+
+    <div id="content" class="content">
+        <div id="container" class="container">
+            <h2 id="checkin">Check Guests In</h2>
+            <table id="checkintable" class="checkintable">
+                <tr>
+                    <td>
+                        <h3>Check Details</h3>
+                    </td>
+                    <td>
+                        <h3>Details</h3>
+                    </td>
+                    <td>
+                        <h3>Confirm Check In</h3>
+                    </td>
+                    <td>
+                        <h3>Check In Confirmation</h3>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <form name="CheckInGuestsCheckDetails">
+
+                            <p>Booking Reference Number</p> 
+                            <input type="text" id="cib_ref" size="5" placeholder="12345">             
+                        </form>
+                    </td>
+                    <td>
+                        <div id="booking_details"></div>
+                    </td>
+                    <td>
+                        <form name="CheckInGuestsConfirm">
+                            <p>Booking Reference Number</p>
+                            <input type="text" id="ci_confirm" size="5" placeholder="12345">
+                        </form>
+                    </td>
+                    <td>
+                        <div id="checkin_confirm"></div>
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <input type="button" value="Check Details" id="check_details" onclick="saveRef(); get_Booking('booking_details')" class="btn">
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>
+                    <td>
+                        <input type="button" value="Confirm Check In" id="check_in" onclick="saveRef2(); checkIn('checkin_confirm')" class="btn">
+                    </td>
+                    <td>
+                        &nbsp;
+                    </td>    
+                </tr>
+            </table>
+
+
+            <form name ="CheckOutGuests">
+                <h2 id="checkoutguests">Check Guests Out</h2>
+                <table id="checkouttable" class="checkouttable">
+                    <tr>
+                        <td>
+                            <h3>Check Out</h3>
+                        </td>
+                        <td>
+                            <h3>Add Supplements</h3>
+                        </td>
+                        <td>
+                            <h3>Bill Summary</h3>
+                        </td>
+                        <td>
+                            <h3>Make A Payment</h3>
+                        </td>
+                        <td>
+                            <h3>Enter Details Here</h3>
+                        </td>
+                        <td>
+                            <h3>Confirmation & Receipt</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>Booking Reference Number</p>
+                            <input type="text" id="cob_ref" size="5" placeholder="12345">
+                        </td>
+                        <td>
+                            <textarea name="notes" id="chargeNotes" cols="20" rows="5" maxlength="300" placeholder="Details of Charges"></textarea>
+                            <p>£<input type="text" id="supplementarycharges" size="20" placeholder="100.00"></p>
+                        </td>
+                        <td>
+                            <div id="charges"></div>
+                        </td>
+                        <td>
+                            <p>Visa</p>
+                            <p>Mastercard</p>
+                            <p>American Express</p>
+                            <p>Name On Card</p>
+                            <p>Card Number</p>
+                            <p>Expiry Date</p>
+                            <p>Billing Address Line 1</p>
+                            <p>Town/City</p>
+                            <p>Country</p>
+                            <p>Post Code/Zip Code</p>
+                        </td>
+                        <td>
+                            <p><input type="radio" id="card1" name="cardtype" value="V"></p>
+                            <p><input type="radio" id="contactChoice2" name="cardtype" value="MC"></p>
+                            <p><input type="radio" id="cardChoice3" name="cardtype" value="A"></p>
+                            <p><input type="text" id="nameoncard" size="30" maxlength="30" placeholder="Name On Card"></p>
+                            <p><input type="text" id="cardno" size="16" maxlength="16" placeholder="Enter A Card Number"></p>
+                            <p><input type="text" id="expirydateA" size="2" maxlength="2" placeholder="12"><input type="text" id="expirydateB" size="2" maxlength="2" placeholder="18"></p>
+                            <p><input type="text" id="secondline" size="20" maxlength="60" placeholder="Address Line 2"></p>
+                            <p><input type="text" id="firstline" size="20" maxlength="60" placeholder="Address Line 1"></p>
+                            <p><input type="text" id="thirdline" size="20" maxlength="60" placeholder="Address Line 3"></p>
+                            <p><input type="text" size="7" id="postcode" maxlength="7" placeholder="NR4 7TJ"></p>
+
+                        </td>
+                        <td>
+                            <div id="paybill" ></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <input type="button" value="Check Out/Generate Bill" id="checkout" onclick="saveSupplements(); supplements('charges')" class="btn">
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <input type="button" value="Pay Bill" id="pay_bill" onclick="savePayment(); payment('paybill')" class="btn">
+                        </td>
+                        <td>
+                            <input type='button' value='Print Booking Confirmation' class='btn' onClick='window.print()'>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+
+
+            <form name="maintenance">
+                <h2 id="maintenance">Maintenance Tasks & Status</h2>
+                <table id="maintenancetable" class="maintenancetable">
+                    <tr>
+                        <td>
+                            <h3>View Tasks</h3>
+                        </td>
+                        <td>
+                            <h3>Update Room Status</h3>
+                        </td>
+                        <td>
+                            <h3>Enter Room Information</h3>
+                        </td>
+                        <td>
+                            <h3>Status Confirmation</h3>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <div id="currenttasks"></div>
+                        </td>
+                        <td>
+                            <p>Room Number </p>
+                            <p>Occupied </p>
+                            <p>Checked Out: To Be Cleaned </p>
+                            <p>Available </p>
+                            <p>Unavailable </p>
+                        </td>
+                        <td>
+                            <p><input type="text" id="roomno" size="3" placeholder="000"></p>
+                            <p><input type="radio" value="O" name="roomstatus" checked/></p>
+                            <p><input type="radio" value="C" name="roomstatus" /></p>
+                            <p><input type="radio" value="A" name="roomstatus" /></p>
+                            <p><input type="radio" value="X" name="roomstatus" /></p>
+                        </td>
+                        <td>
+                            <div id="status"></div>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <input type="button" value="View Current Tasks" id="viewtasks" onclick="tasks('currenttasks');" class="btn">
+                        </td>
+                        <td>
+                            &nbsp;
+                        </td>
+                        <td>
+                            <input type="button" value="Update Status" id="updatestatus" onclick="roomStatus(); room_Status('status')" class="btn">
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+
+    <div class="footer">
+        <div class="container">
+            <div class="footer">
+                <div class="container">
+                    <h3 id="contactus">Contact</h3>
+                    <table class="contacttable" id="contacttable">
+                        <tr>
+                            <td>
+                                <p>
+                                    Address: 1 Bishee Barnabee Way, Norwich, NR4 3LB
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    Telephone: 01603 722 433
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    Email: info@bisheebarnabeehotel.co.uk
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    &copy; Copyright 2018 <a target="_blank" title="follow me on facebook" href="https://www.facebook.com/Bishee-Barnabee-2594848893889425"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png"></a> <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png"></a> <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png"></a><a target="_blank" title="follow me on pinterest" href="https://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png"></a>
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <iframe id="iframe" class="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.8777519454725!2d1.3107433163592468!3d52.62605323611583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9e3936101164b%3A0x15edf68fbe906c1f!2sNorwich+Hotel!5e0!3m2!1sen!2suk!4v1543997870654"></iframe>
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+</html>
