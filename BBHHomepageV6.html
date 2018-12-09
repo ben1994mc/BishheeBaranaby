@@ -8,38 +8,39 @@
         <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js"></script>
         <script src="main.js"></script>
         <script src="localstorage.js"></script>
-        <title>Welcome to The Bishee Barnabee Hotel</title>
-        <link rel="stylesheet" href="BBHV7.css">
-        <link rel="icon" href="LogoNoWords.png">
+        <title>BISHEE BARNABEE HOTEL</title>
+        <link rel="stylesheet" href="BBHV6.css">
     </head>
 
     <body>
-        
+        <div id="main" class="main">
             <div class="header">
                 <div class="container">
-                    <img class="logo" src="BBHLogo2Resize.jpg" alt="Bishee Barnabee Hotel">
+                    <img class="img" src="new.png" alt="Bishee Barnabee Hotel">
                 </div>
             </div>
-        
-        <div id="main" class="main">
-            
-            <div id="CheckAvailabilitybar" class="CheckAvailabilitybar">
-                <form>
-                    <div id="availability" class="container">
+
+        <div id="CheckAvailabilitybar" class="CheckAvailabilitybar">
+		<form>
+            <div id="availability" class="container">
                         <table>
                             <tr>
                                 <td>
                                     <h3>Room Type</h3>
                                 </td>
+
                                 <td>
                                     <h3>Package</h3>
                                 </td>
+
                                 <td>
                                     <h3>Check-In</h3>
                                 </td>
+
                                 <td>
                                     <h3>Check-Out</h3>
                                 </td>
+
                                 <td>
                                     <h3>Check Availability</h3>
                                 </td>
@@ -59,7 +60,7 @@
                                     <input type="date" name="COD"/>
                                 </td>
                                 <td>
-                                    <input type="button" value="Check Availability" id="check_availability" onclick="saveForm(); checkAvailability('availability');" class="btn">
+                                    <input type="button" value="Check Availability" id="check_availability" onclick="saveForm(); checkAvailability('availability')"; class="btn">
                                 </td>
                             </tr>
                             <tr>
@@ -90,7 +91,7 @@
             <div class="content">
                 <div class="container">
                     <div class="main">
-                        <h1>Welcome to The Bishee Barnabee Hotel</h1>
+                        <h1>Welcome to The Bishee Barnabee</h1>
                         <h2>About us</h2>
                         <p> The Bishee Barnabee Hotel (BBH) is a newly established independent hotel located on the western periphery of Norwich, 
                             within walking distance of the commercial hub of the city. The hospital and research park are nearby, facilitating all
@@ -196,7 +197,8 @@
 
                         <h3>Facilities</h3>
                         <p>Alongside our primary hotel service we also offer a restaurant experience, the opportunity to rent several function rooms, and an on-site gym .</p>
-                            <table id="facilitiestable" class="facilitiestable">
+                        <div id="table">
+                            <table>
                                 <tr>
                                     <td>
                                         <h3>
@@ -233,7 +235,7 @@
                                     </td>
                                     <td>
                                         <p>
-                                            The Bishee Barnabee Function room is the prime destination for any party, conference, or family event. Our dedicated kitchen staff will prepare a buffet for your guests and a full dining experience is at your behest. </p>
+                                            The Dishee Barnabee Function room is the prime destination for any party, conference, or family event. Our dedicated kitchen staff will prepare a buffet for your guests and a full dining experience is at your behest. </p>
                                         <ul>
                                             <li>Small Meeting Room 1: (20-30 people)</li>
                                             <li>Medium Meeting Room 2: (30-50 people)</li>
@@ -249,6 +251,7 @@
                                     </td>
                                 </tr>
                             </table>
+                        </div>
                     </div>
                 </div>
 
@@ -260,12 +263,12 @@
                 </div>
             </div>
         </div>
-
-        <div id="booking">
-            <div class="content">
-                <div class="container">
-                    <form name="paymentinfoform1">
-                        <table id="bookinginformationtable" class="bookinginformationtable">
+        
+            <div id="booking">
+                <h3 id="booking_bar">Booking</h3>
+                <form name="paymentinfoform1">
+                    <div class="container">
+                        <table>
                             <tr>
                                 <td>
                                     <h3>Booking Summary</h3>
@@ -277,10 +280,7 @@
                                     <h3>Payment Information</h3>
                                 </td>
                                 <td>
-                                    <h3>Enter Details Here</h3>
-                                </td>
-                                <td>
-                                    <h3>Your Confirmation Will Appear Here:-</h3>
+                                    &nbsp;
                                 </td>
                             </tr>
                             <tr>
@@ -291,107 +291,79 @@
                                     <div id="price"><p>The total price of your stay will be:</p></div>
                                 </td>
                                 <td>
-                                    <p>Email Address</p>
-                                    <p>Visa</p>
-                                    <p>Mastercard</p>
-                                    <p>American Express</p>
-                                    <p>Name On Card</p>
-                                    <p>Card Number</p>
-                                    <p>Expiry Date</p>
-                                    <p>Billing Address Line 1</p>
-                                    <p>Town/City</p>
-                                    <p>Country</p>
-                                    <p>Post Code/Zip Code</p>
-                                    <p>Notes </p>
+                                    <p>Email Address</p><input type="text" id="c_email" size="30" maxlength="60" placeholder="info@bisheebarnabeehotel.co.uk">
+                                    <div>Visa</div><input type="radio" id="card1" name="cardtype" value="V">
+                                    
+                                    <div>Mastercard</div><input type="radio" id="contactChoice2" name="cardtype" value="MC">
+                                    
+                                    <div>American Express</div><input type="radio" id="cardChoice3" name="cardtype" value="A">
+                                    
+                                    <p>Name On Card</p><input type="text" id="nameoncard" size="30" maxlength="30" placeholder="Name On Card">
+                                    <p>Card Number</p><input type="text" id="cardno" size="16" maxlength="16" placeholder="Enter A Card Number">
+                                    <p>Expiry Date</p><input type="text" id="expirydateA" size="2" maxlength="2" placeholder="12"><input type="text" id="expirydateB" size="2" maxlength="2" placeholder="18">
+                                    <p>Billing Address Line 1</p><input type="text" id="firstline" size="20" maxlength="60" placeholder="Address Line 1">
+                                    <p>Billing Address Line 2</p><input type="text" id="secondline" size="20" maxlength="60" placeholder="Address Line 2">
+                                    <p>Billing Address Line 3</p><input type="text" id="thirdline" size="20" maxlength="60" placeholder="Address Line 3">
+                                    <p>Post Code</p><input type="text" size="7" id="postcode" maxlength="7" placeholder="NR4 7TJ">
+                                    <textarea name="notes" id="notes" cols="60" rows="5" maxlength="300" placeholder="Extra information or requests about your stay"></textarea>
+                                    <p><input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveCustomer(); post_confirmation('confirmation');"> </p>
                                 </td>
                                 <td>
-                                    <p><input type="text" id="c_email" size="30" maxlength="60" placeholder="info@bisheebarnabeehotel.co.uk"></p>
-                                    <p><input type="radio" id="card1" name="cardtype" value="V"></p>
-                                    <p><input type="radio" id="contactChoice2" name="cardtype" value="MC"></p>
-                                    <p><input type="radio" id="cardChoice3" name="cardtype" value="A"></p>
-                                    <p><input type="text" id="nameoncard" size="30" maxlength="30" placeholder="Name On Card"></p>
-                                    <p><input type="text" id="cardno" size="16" maxlength="16" placeholder="Enter A Card Number"></p>
-                                    <p><input type="text" id="expirydateA" size="2" maxlength="2" placeholder="12"><input type="text" id="expirydateB" size="2" maxlength="2" placeholder="18"></p>
-                                    <p><input type="text" id="secondline" size="20" maxlength="60" placeholder="Address Line 2"></p>
-                                    <p><input type="text" id="firstline" size="20" maxlength="60" placeholder="Address Line 1"></p>
-                                    <p><input type="text" id="thirdline" size="20" maxlength="60" placeholder="Address Line 3"></p>
-                                    <p><input type="text" size="7" id="postcode" maxlength="7" placeholder="NR4 7TJ"></p>
-                                    <p><textarea name="notes" id="notes" cols="30" rows="5" maxlength="300" placeholder="Extra information or requests about your stay (dietary requirements, disabilities, etc.)"></textarea></p>
-                                </td>
-                                <td>
-                                    <div id="confirmation"></div>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                     &nbsp;
-                                </td>
-                                <td>
-                                     &nbsp;
-                                </td>
-                                <td>
-                                     &nbsp;
-                                </td>
-                                <td>
-                                    <input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveCustomer(); post_confirmation('confirmation');">
-                                    <input type="reset" value="Clear" class="btn" id="reset_button">
-                                </td>
-                                <td>
-                                <input type="button" value="Back to Check Availability" class="btn" onClick="window.location.reload()">
-                                </td>
-                            </tr>
-                        </table>
-                    </form>
-                </div>
-            </div>
-        </div>
-
-        <div class="footer">
-            <div class="container">
-                &copy; Copyright 2018 <a target="_blank" title="follow me on facebook" href="https://www.facebook.com/Bishee-Barnabee-2594848893889425"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a> <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a> <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a><a target="_blank" title="follow me on pinterest" href="https://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0></a>
-
-                <div class="footer">
-                    <div class="container">
-                        <h3>Contact</h3>
-                        <table class="contacttable" id="contact">
-                            <tr>
-                                <td>
-                                    <p>
-                                        Address
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        1 Bishee Barnabee Way, Norwich, NR4 3LB
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>
-                                        Telephone
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        01603 722 433
-                                    </p>
-                                </td>
-                            </tr>
-                            <tr>
-                                <td>
-                                    <p>
-                                        Email
-                                    </p>
-                                </td>
-                                <td>
-                                    <p>
-                                        info@bisheebarnabeehotel.co.uk
-                                    </p>
+                                    
+                                    <div id="confirmation"><p></p></div>
                                 </td>
                             </tr>
                         </table>
                     </div>
-                </div>
-                </body>
-                </html>
+                </form>
+            </div>
+
+            <div class="footer">
+                <div class="container">
+                    &copy; Copyright 2018 <a target="_blank" title="follow me on facebook" href="https://www.facebook.com/Bishee-Barnabee-2594848893889425"><img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png" border=0></a> <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png" border=0></a> <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png" border=0></a><a target="_blank" title="follow me on pinterest" href="https://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png" border=0></a>
+
+                    <div class="footer">
+                        <div class="container">
+                            <h3>Contact</h3>
+                            <table class="contacttable" id="contact">
+                                <tr>
+                                    <td>
+                                        <p>
+                                            Address
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            1 Bishee Barnabee Way, Norwich, NR4 3LB
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            Telephone
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            01603 722 433
+                                        </p>
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        <p>
+                                            Email
+                                        </p>
+                                    </td>
+                                    <td>
+                                        <p>
+                                            info@bisheebarnabeehotel.co.uk
+                                        </p>
+                                    </td>
+                                </tr>
+                            </table>
+                        </div>
+                    </div>
+                    </body>
+                    </html>
