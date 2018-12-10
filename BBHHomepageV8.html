@@ -1,0 +1,509 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+
+        <meta charset="utf-8">
+        <script src="http://code.jquery.com/jquery-3.2.1.min.js"></script>
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+        <script src="main.js"></script>
+        <script src="localstorage.js"></script>
+        <title>Welcome to The Bishee Barnabee Hotel</title>
+        <link rel="stylesheet" href="BBHV8.css">
+        <link rel="icon" href="LogoNoWords.png">
+    </head>
+
+    <body>
+
+        <div class="header">
+            <div class="container">
+                <img class="logo" src="BBHLogo2Resize.jpg" alt="Bishee Barnabee Hotel">
+            </div>
+        </div>
+
+        <div id="main" class="main">
+            <div id="CheckAvailabilitybar" class="CheckAvailabilitybar">
+                <form name="checkavailability">
+                    <div id="availability">
+                        <table id="checkavailabilitytable" class="checkavailabilitytable">
+                            <tr>
+                                <td>
+                                    <h3>Room Type</h3>
+                                </td>
+                                <td>
+                                    <h3>Package Type</h3>
+                                </td>
+                                <td>
+                                    <h3>Check-In</h3>
+                                </td>
+                                <td>
+                                    <h3>Check-Out</h3>
+                                </td>
+                                <td>
+                                    <h3>Check Availability</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Double <input type="radio" value="d" name="RoomType" checked/></p>
+                                </td>
+
+                                <td>
+                                    <p>Standard <input type="radio" value="std" name="PackageType" checked/></p>
+                                </td>
+                                <td>
+                                    <input type="date" name="CID"/>
+                                </td>
+                                <td>
+                                    <input type="date" name="COD"/>
+                                </td>
+                                <td>
+                                    <input type="button" value="Book" id="check_availability" onclick="saveForm(); checkAvailability('availability');" class="btn">
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Twin <input type="radio" value="t" name="RoomType"></p>
+                                </td>
+
+                                <td>
+                                    <p>Premium <input type="radio" value="sup" name="PackageType" class="custom-control-input"></p>
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <input type="button" value="Add Room" id="add_room" onclick="saveForm(); addRoom('availability');" class="btn">   <input type="reset" value="Clear" class="btn" id="reset_button">
+                                    
+                                </td>
+                            </tr>
+                        </table>
+                    </div>
+                </form>
+            </div>
+
+
+            <div id="navbar" class="navbar">
+                <h1>Welcome to The Bishee Barnabee Hotel</h1>
+                <table id="navtable" class="navtable">
+                    <tr>
+                        <td>
+                            <a href="#aboutus"><h2>About Us</h2></a>
+                        </td>
+                        <td>
+                            <a href="#packages"><h2>Packages</h2></a>
+                        </td>
+                        <td>
+                            <a href="#roominfo"><h2>Room Info</h2></a>
+                        </td>
+                        <td>
+                            <a href="#facilities"><h2>Facilities</h2></a>
+                        </td>
+                        <td>
+                            <a href="#modifybooking"><h2>Bookings</h2></a>
+                        </td>
+                        <td>
+                            <a href="#contactus"><h2>Contact Us</h2></a>
+                        </td>
+                    </tr>
+                </table>
+            </div>
+
+            <div class="content">
+                <div class="container">
+                    <h2 id="aboutus">About Us</h2>
+                    <table id="aboutustable" class="aboutustable">
+                        <tr>
+                            <td>
+                                <p> The Bishee Barnabee Hotel (BBH) is a newly established independent hotel located on the western periphery of Norwich. 
+                                    We are within walking distance of the commercial hub of the city and the ground-breaking Norwich Research Park. 
+                                    With a range of facilities and function rooms available, we are able to cater to your every need, be it business or leisure.
+                                    Come and stay for as long as you like! Nothing is off the table!
+                                </p>
+                                <p>
+                                    Take a look around:
+                                </p>
+                                <p id="cf7_controls">
+                                    <span class="selected">Reception</span>
+                                    <span>Lobby</span>
+                                    <span>Main Dining Room</span>
+                                    <span>Main Function Room</span>
+                                </p>
+                                <p>
+                                    We have been providing comfortable home-from-home stays and an extravagant and indulgent experiences for generations. 
+                                    Norwich's history is well defined, and so is ours: Our world class service dates back over 50 years, 1000+ 
+                                    weddings, and innumerable business functions!
+                                </p>
+                                <p>
+                                    We pride ourselves on our Michelin Star restaurant, state of the art facilities, friendly, hardworking staff and 
+                                    tailored service.
+                                </p>
+                            </td>
+                            <td>
+                                <div id="cf7" class="shadow">
+                                    <img class='opaque' src="reception2.jpg" alt="reception2">
+                                    <img src="reception.jpg" class='roompic' alt="reception">
+                                    <img src="diningroom.jpg" class='roompic' alt="diningroom">
+                                    <img src="mainfunctionroom.jpg" class='roompic' alt="mainfunctionroom">
+                                </div>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="reception3.jpg" class='roompic' alt="reception3">
+                            </td>
+                            <td>
+                                <p>
+                                    Check out the top local attractions in our fine city, such as <a class="smalllink" href="https://www.visitnorwich.co.uk/explore-and-experience/sights-and-attractions/listing/norwich-cathedral/">Norwich Cathedral</a>,
+                                    <a class="smalllink" href="https://www.museums.norfolk.gov.uk/norwich-castle">Norwich Castle</a>, and <a class="smalllink" href="https://www.norwichresearchpark.com/">Norwich Research Park</a>. 
+                                </p>
+                                <p>
+                                    Norwich's booming nightlife is easily accessible from the Bishee Barnabee. With a range of late night public transport options and a late night taxi service run by the BBH itself,
+                                    you're guaranteed to arrive on time, and get home safely from anywhere within 40 miles of your home away from home.
+                                </p>
+                            </td>
+                        </tr> 
+                    </table>
+
+                    <hr>
+
+                    <h2 id="packages">Packages</h2>
+                    <table id="roompackagestable" class="roompackagestable">
+                        <tr>
+                            <td>
+                                <p>Whether you're looking for a premium experience or just a comfortable stay, we've got the perfect package for you </p>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p> 
+                                    We recommend our premium service if you're looking to get a little extra out of your stay. It includes the following:
+                                </p>
+                                <ul>
+                                    <li>Complementary wifi</li>
+                                    <li>A Bang and Olufsen television</li>
+                                    <li>The best views of the beautiful Norwich countryside</li>
+                                    <li>An gas stove and fan oven </li>
+                                    <li>Luxury en-suite facilities and Molton Brown toiletries</li>
+                                    <li>A mini-bar including several spirits, mixers, wines, and beers</li>
+                                    <li>All features of the standard package</li>
+                                </ul>
+                                <p>
+                                    Available from £75 per night
+                                </p>
+                            </td>
+                            <td>
+                                <p> 
+                                    Our standard package is more than enough to keep you comfortable during your time with us. We provide:
+                                </p>
+                                <ul>
+                                    <li>Complementary wi-fi</li>
+                                    <li>An electric stove </li> 
+                                    <li>Television access </li>
+                                    <li>On-demand room service</li>
+                                    <li>En-suite facilities</li>
+                                    <li>Refreshment facilities</li>
+                                    <li>Radox toiletries</li>
+                                </ul>
+                                <p>
+                                    Available from £62 per night
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img src="premiumroom.jpg" alt="reception2" class="roompic">
+                            </td>
+                            <td>
+                                <img src="standardroom.jpg" alt="reception2" class="roompic">
+                            </td>
+                        </tr> 
+                    </table>
+
+                    <hr>
+
+                    <h2 id="roominfo">Room Info</h2>
+                    <table id="roominformationtable" class="roominformationtable">
+                        <tr>
+                            <td>
+                                <p>Families, couples, or business partners, we have the room for you! </p>
+                            </td>
+                            <td>
+                                &nbsp;
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <h3>
+                                    Double
+                                </h3>
+                            </td>
+                            <td>	
+                                <h3>
+                                    Twin
+                                </h3>
+                            </td>	
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="roompic" src="doubleroom.jpg" alt="doubleroom">
+                            </td>
+                            <td>
+                                <img class="roompic" src="twinroom.jpg" alt="twinroom">
+                            </td>	
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    Our double rooms are first class including specially engineered memory foam mattresses for maximum comfort.
+                                    Available from £65 per night.
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    Our twin-rooms are for sharers but provide excellent privacy and comfort all at once.
+                                    Available from £62 per night.
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+
+                    <hr>
+
+                    <h2 id="facilities">Facilities</h2>
+                    <table id="facilitiestable" class="facilitiestable">
+                        <tr>
+                            <td>
+                                <h3>
+                                    Bishee Barnabee Restaurant
+                                </h3>
+                            </td>
+                            <td>
+                                <h3>
+                                    Function Rooms
+                                </h3>
+                            </td>
+                            <td>
+                                <h3>
+                                    On-site Gym
+                                </h3>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <img class="facilitiespic" src="r.jpg" alt="Restaurant">
+                            </td>
+                            <td>
+                                <img class="facilitiespic" src="f.jpg" alt="Function">
+                            </td>
+                            <td>
+                                <img class="facilitiespic" src="g.jpg" alt="Gym">
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>
+                                    Alongside our hotel service we operate the Bishee Barnanbee restaurant and bar, which serves a range of cuisines to suit all dietary needs and palettes. Our new chef de cuisine Han Gong studied fine dining in Paris, where he was taught by the likes of Dan Smith and Rick Stein. 
+                                </p>
+                            </td>
+                            <td>
+                                <p>
+                                    The Bishee Barnabee Function room is the prime destination for any party, conference, or family event. Our dedicated kitchen staff will prepare a buffet for your guests and a full dining experience is at your behest. </p>
+                                <ul>
+                                    <li>Small Meeting Room 1: (20-30 people)</li>
+                                    <li>Medium Meeting Room 2: (30-50 people)</li>
+                                    <li>Large Meeting Room 3: (up to 60 people)</li>
+                                </ul>
+
+                            </td>
+                            <td>
+                                <p>
+                                    A healthy body means a healthy mind. We want to provide our guests with the best customer service and experience. That’s why we open our gym to all guests. 
+                                    Our gym offers state of the art facilities including a cardiovascular area, freeweights and cables, and a range of resistance machines. 
+                                </p>
+                            </td>
+                        </tr>
+                    </table>
+                    <hr>
+
+                    <h2 id="modifybooking">Modify Booking</h2>
+                    <form name="modifybooking1">
+                        <table id="modifybookingtable" class="modifybookingtable">
+                            <tr>
+                                <td>
+                                    <p>Need to modify your booking? Enter your booking info. </p>
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Booking Reference Number: </p>
+                                </td>
+                                <td>
+                                    <input type="text" size="30" maxlength="5" placeholder="12345">
+                                </td>    
+                                <td>
+                                    <input type="button" value="Modify Booking" id="modify_booking" class="btn" onclick="saveForm();">
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <p>Email: </p>
+                                </td>
+                                <td>
+                                    <input type="text" size="30" id="bookingreferencenumber" maxlength="60" placeholder="info@bisheebarnabeehotel.co.uk">
+                                </td>
+                                <td>
+                                    <input type="reset" value="Clear" class="btn">
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+        <div id="booking">
+            <div class="content">
+                <div class="container">
+                    <form name="paymentinfoform1">
+                        <table id="bookinginformationtable" class="bookinginformationtable">
+                            <tr>
+                                <td>
+                                    <h3>Booking Summary</h3>
+                                </td>
+                                <td>
+                                    <h3>Price Summary</h3>
+                                </td>
+                                <td>
+                                    <h3>Payment Information</h3>
+                                </td>
+                                <td>
+                                    <h3>Enter Details Here</h3>
+                                </td>
+                                <td>
+                                    <h3>Your Confirmation <br>
+                                        Will Appear Here:-</h3>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    <div id="bookingSUM"></div>
+                                </td>
+                                <td>
+                                    <div id="price"><p>The total price of your stay will be:</p></div>
+                                </td>
+                                <td>
+                                    <p>Email Address</p>
+                                    <p>Visa</p>
+                                    <p>Mastercard</p>
+                                    <p>American Express</p>
+                                    <p>Name On Card</p>
+                                    <p>Card Number</p>
+                                    <p>Expiry Date</p>
+                                    <p>Billing Address Line 1</p>
+                                    <p>Town/City</p>
+                                    <p>Country</p>
+                                    <p>Post Code/Zip Code</p>
+                                    <p>Notes </p>
+                                </td>
+                                <td>
+                                    <p><input type="text" id="c_email" size="30" maxlength="60" placeholder="info@bisheebarnabeehotel.co.uk"></p>
+                                    <p><input type="radio" id="card1" name="cardtype" value="V"></p>
+                                    <p><input type="radio" id="contactChoice2" name="cardtype" value="MC"></p>
+                                    <p><input type="radio" id="cardChoice3" name="cardtype" value="A"></p>
+                                    <p><input type="text" id="nameoncard" size="30" maxlength="30" placeholder="Name On Card"></p>
+                                    <p><input type="text" id="cardno" size="16" maxlength="16" placeholder="Enter A Card Number"></p>
+                                    <p><input type="text" id="expirydateA" size="2" maxlength="2" placeholder="12"><input type="text" id="expirydateB" size="2" maxlength="2" placeholder="18"></p>
+                                    <p><input type="text" id="firstline" size="20" maxlength="60" placeholder="Address Line 1"></p>
+                                    <p><input type="text" id="secondline" size="20" maxlength="60" placeholder="Town/City"></p>
+                                    <p><input type="text" id="thirdline" size="20" maxlength="60" placeholder="Country"></p>
+                                    <p><input type="text" size="7" id="postcode" maxlength="7" placeholder="NR4 7TJ"></p>
+                                    <p><textarea name="notes" id="notes" cols="30" rows="5" maxlength="300" placeholder="Extra information or requests about your stay (dietary requirements, disabilities, etc.)"></textarea></p>
+                                </td>
+                                <td>
+                                    <div id="confirmation"></div>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    &nbsp;
+                                </td>
+                                <td>
+                                    <input type="button" value="Confirm Booking" id="confirm_booking" class="btn" onclick="saveCustomer(); post_confirmation('confirmation');">
+                                    <input type="reset" value="Clear" class="btn">
+                                </td>
+                                <td>
+                                    <input type="button" value="Back to Check Availability" class="btn" onClick="window.location.reload()">
+                                </td>
+                            </tr>
+                        </table>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <div class="footer">
+            <div class="container">
+                <h3 id="contactus">Contact</h3>
+                <table class="contacttable" id="contacttable">
+                    <tr>
+                        <td>
+                            <p>
+                                Address: 1 Bishee Barnabee Way, Norwich, NR4 3LB
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                Telephone: 01603 722 433
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                Email: info@bisheebarnabeehotel.co.uk
+                            </p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>
+                            <p>
+                                &copy; Copyright 2018 <a target="_blank" title="follow me on facebook" href="https://www.facebook.com/Bishee-Barnabee-2594848893889425"> <img alt="follow me on facebook" src="https://c866088.ssl.cf3.rackcdn.com/assets/facebook30x30.png"</a> <a target="_blank" title="follow me on youtube" href="https://www.youtube.com/PLACEHOLDER"><img alt="follow me on youtube" src="https://c866088.ssl.cf3.rackcdn.com/assets/youtube30x30.png"></a> <a target="_blank" title="follow me on instagram" href="https://www.instagram.com/PLACEHOLDER"><img alt="follow me on instagram" src="https://c866088.ssl.cf3.rackcdn.com/assets/instagram30x30.png"></a><a target="_blank" title="follow me on pinterest" href="https://www.pinterest.com/PLACEHOLDER"><img alt="follow me on pinterest" src="https://c866088.ssl.cf3.rackcdn.com/assets/pinterest30x30.png"></a>
+                            </p>
+                        </td>
+                    </tr>
+                </table>
+                <iframe id="iframe" class="iframe" src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2421.8777519454725!2d1.3107433163592468!3d52.62605323611583!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47d9e3936101164b%3A0x15edf68fbe906c1f!2sNorwich+Hotel!5e0!3m2!1sen!2suk!4v1543997870654"></iframe>
+            </div>
+        </div>
+    </body>
+</html>
