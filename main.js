@@ -1,5 +1,7 @@
-function saveForm() {
 
+var newIndex = 0;
+function saveForm() {
+    newIndex++;
     var checkAvailabilityData = {}; // showing elements added dynamically
     checkAvailabilityData.RoomType = $('input[name=RoomType]:checked').val(); // get a radio button value
     checkAvailabilityData.PackageType = $('input[name=PackageType]:checked').val(); // gets a single value
@@ -10,8 +12,8 @@ function saveForm() {
     console.log('PackageType =', checkAvailabilityData.PackageType);
     console.log('CID =', checkAvailabilityData.CID);
     console.log('COD =', checkAvailabilityData.COD);
-    setObject('checkAvailability', checkAvailabilityData); // store the data locally
-    var storedData = getObject('checkAvailability'); // get it back again...
+    setObject('checkAvailability'+newIndex, checkAvailabilityData); // store the data locally
+    var storedData = getObject('checkAvailability'+newIndex); // get it back again...
 // check...
     console.log('RoomType =', storedData.RoomType);
     console.log('PackageType =', storedData.PackageType);
@@ -19,9 +21,20 @@ function saveForm() {
     console.log('COD =', storedData.COD);
 
     console.log(localStorage.length);
+       
+        console.log('checkAvailability'+newIndex);
+     var d = 0;   
+    for (i = 0; i < newIndex; i++) {
+    d++;
+        console.log(getObject('checkAvailability'+d));
+            }   
 }
 ;
 
+function decrement()
+{
+    newIndex--;
+}
 function saveCustomer() {
 
     var customerData = {};
@@ -69,10 +82,16 @@ function hidemain() {
     $("#main").hide();
 }
 function postSummary(disp_id) {
-    var storedData;
-    storedData = getObject('checkAvailability');
+    
+      var d = 0;   
+    for (i = 0; i < newIndex; i++) {
+    d++;
+         var storedData;    
+    storedData = getObject('checkAvailability'+d);
     bookingSummary(storedData, disp_id);
-
+            
+    }   
+   
 }
 ;
 
@@ -108,23 +127,48 @@ function bookingSummary(data, disp_id) {
         console.log('success4');
         $('#' + disp_id).append("Standard Twin" + "<br>");
         $('#' + disp_id).append("<img src='standardtwinsmall.jpg' alt='standardtwinsmall'>");
-
     }
     $('#' + disp_id).append("<br>" + "From:" + "<br>");
-    $('#' + disp_id).append(data.CID + "<br/>");
+    $('#' + disp_id).append("<br>" + data.CID + "<br/>");
     $('#' + disp_id).append("<br>" + "To:" + "<br/>");
-    $('#' + disp_id).append(data.COD + "<br/>");
+    $('#' + disp_id).append("<br>" + data.COD + "<br/>");
 }
 
 
 function checkAvailability(disp_id) {
-    var storedData;
-    saveForm(); // save the form again just in case
-    storedData = getObject('checkAvailability');
-    post('http://localhost:8081/get_form', storedData, disp_id);
+    
+    
+    var d = 0; 
+    for (i = 0; i < newIndex; i++) {
+    d++;
+         var storedData; // save the form again just in case
+    storedData = getObject('checkAvailability'+d);
+     post('http://localhost:8081/get_form', storedData, disp_id);
+            }   
+  
 }
 ;
+function get_numbers(path, data, disp_id) {
 
+    // convert the parameters to a JSON data string
+    var json = JSON.stringify(data);
+  
+    $.ajax({
+        url: path,
+        type: "POST",
+        data: json,
+        success: function (rt) {
+            console.log(rt); // returned data
+            var json = JSON.parse(rt); // the returned data will be an array
+           
+
+        },
+        error: function () {
+            alert("there's a problem");
+        }
+    });
+}
+;
 
 
 // submit data for storage by using AJAX (to be implemented) 
@@ -133,10 +177,11 @@ function post(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+    $('#' + disp_id).remove;
     var booking = '"bookingSUM"';
     var price = '"price"';
     var booking_page = "<table id='proceedtobooking' class='proceedtobooking'><tr><td><h3>Rooms Available:</h3></td><td><h3><div class='container'><input type='button' value='Proceed to Booking' class='btn' onclick='hidemain(); showbooking(); postSummary(" + booking + "); post_total(" + price + ")'></div></h3></td></tr></table>";
+
 
     $.ajax({
         url: path,
@@ -145,12 +190,12 @@ function post(path, data, disp_id) {
         success: function (rt) {
             console.log(rt); // returned data
             var json = JSON.parse(rt); // the returned data will be an array
-
+            $('#' + disp_id).empty;
             if (json.length > 0) {
                 $('#' + disp_id).empty();
                 $('#' + disp_id).append(booking_page);
             }
-            if (json.length < 1) {
+            if (json.length == 0) {
                 postAvailability('CheckAvailabilitybar');
             }
 
@@ -163,8 +208,7 @@ function post(path, data, disp_id) {
 ;
 function postAvailability(disp_id) {
     var storedData;
-    saveForm(); // save the form again just in case
-    storedData = getObject('checkAvailability');
+    storedData = getObject('checkAvailability'+index);
     no_rooms('http://localhost:8081/no_rooms', storedData, disp_id);
 }
 ;
@@ -173,7 +217,7 @@ function no_rooms(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-
+    $('#' + disp_id).remove;
 
     $.ajax({
         url: path,
@@ -182,29 +226,51 @@ function no_rooms(path, data, disp_id) {
         success: function (rt) {
             console.log(rt); // returned data
             var json = JSON.parse(rt); // the returned data will be an array
+
             $('#' + disp_id).empty;
             if (json.length > 0) {
+
+                $('#' + disp_id).empty;
                 $('#' + disp_id).append("<table id='sorryno' class='sorryno'><tr><td><h3>Sorry, no rooms of that type are available for those dates</h3></tr>\n\
                                         <tr><td><h3>However, room(s) of the following type(s) are available:</h3></td></tr></table>");
+
+
+                var i = 0;
+                var j = 0;
+                var k = 0;
+                var f = 0;
+
                 $.each(json, function (i, val) {
                     console.log(val);
-                    if (JSON.stringify(val).includes('sup_d'))
+
+
+                    if (JSON.stringify(val).includes('sup_d') && (i == 0))
                     {
+                        i++;
                         $('#' + disp_id).append("<table id='supdtable' class='supdtable'><tr><td><h3>Premium Double:</h3></td></tr><tr><td><img src='premiumdouble.jpg' alt='premiumdouble'></td></tr></table>");
+
                     } else
-                    if (JSON.stringify(val).includes('sup_t'))
+                    if (JSON.stringify(val).includes('sup_t') && (j == 0))
                     {
+                        j++;
                         $('#' + disp_id).append("<table id='supttable' class='supttable'><tr><td><h3>Premium Twin:</h3></td></tr><tr><td><img src='premiumtwin.jpg' alt='premiumtwin'></td></tr></table>");
+
                     } else
-                    if (JSON.stringify(val).includes('std_t'))
+                    if (JSON.stringify(val).includes('std_t') && (k == 0))
                     {
+                        k++;
                         $('#' + disp_id).append("<table id='stdttable' class='supttable'><tr><td><h3>Standard Twin:</h3></td></tr><tr><td><img src='standardtwin.jpg' alt='premiumtwin'></td></tr></table>");
+
                     } else
-                    if (JSON.stringify(val).includes('std_d'))
+                    if (JSON.stringify(val).includes('std_d') && (f == 0))
                     {
+                        f++;
                         $('#' + disp_id).append("<table id='stddtable' class='supttable'><tr><td><h3>Standard Double:</h3></td></tr><tr><td><img src='standarddouble.jpg' alt='standarddouble'></td></tr></table>");
+
                     }
-                });
+
+
+                })
 
             }
 
@@ -220,9 +286,14 @@ function no_rooms(path, data, disp_id) {
 
 
 function post_total(disp_id) {
-    var storedData;
-    storedData = getObject('checkAvailability');
+    var d = 0;   
+    for (i = 0; i < newIndex; i++) {
+    d++;
+             var storedData;
+    storedData = getObject('checkAvailability'+d);
     post_price('http://localhost:8081/post_price', storedData, disp_id);
+            } 
+       
 }
 ;
 
@@ -248,7 +319,7 @@ function post_price(path, data, disp_id) {
             var depositfull = Number(pricequotes[3]);
             var deposit = depositfull / 10;
             var depositCurrency = deposit.toFixed(2);
-            $('#' + disp_id).append('£' + pricequotes[3] + "</br>");
+            $('#' + disp_id).append('£' + pricequotes[3] + "<br>");
             $('#' + disp_id).append('The amount to pay now is: ' + '£' + depositCurrency);
         },
         error: function () {
@@ -259,6 +330,7 @@ function post_price(path, data, disp_id) {
 ;
 
 function post_confirmation(disp_id) {
+   
     var storedData;
     storedData = getObject('customer');
     confirmation('http://localhost:8081/insert_customer', storedData, disp_id);
@@ -270,7 +342,7 @@ function confirmation(path, data, disp_id) {
 
     // convert the parameters to a JSON data string
     var json = JSON.stringify(data);
-    var printButton = "<input type='button' value='Print Booking Confirmation' class='btn' onClick='window.print()'>";
+
 
 
     $.ajax({
@@ -281,15 +353,14 @@ function confirmation(path, data, disp_id) {
             console.log(rt); // returned data
             var json = JSON.parse(rt); // the returned data will be an array
 
-
+            $('#' + disp_id).empty();
 
             var name = JSON.stringify(json);
             var name2 = name.split('"');
-
-            $('#' + disp_id).append(name2[5] + "</br>");
-            $('#' + disp_id).append(printButton);
-
+           
+            $('#' + disp_id).append("<br>" + name2[5] + "<br>");
             post_confirmation_B('confirmation');
+
 
         }
     });
@@ -297,9 +368,12 @@ function confirmation(path, data, disp_id) {
 ;
 
 function post_confirmation_B(disp_id) {
-    var storedData;
-    storedData = getObject('checkAvailability');
+    
+        var storedData;
+    storedData = getObject('checkAvailability'+newIndex);
     confirmation_B('http://localhost:8081/insert_booking', storedData, disp_id);
+           
+      
 }
 ;
 
@@ -317,17 +391,93 @@ function confirmation_B(path, data, disp_id) {
         success: function (rt) {
             console.log(rt); // returned data
             var json = JSON.parse(rt); // the returned data will be an array
+            var printButton = "<input type='button' value='Print Booking Confirmation' class='btn' onClick='window.print()'>";
+            clear_deets('carddeets', 'paymentinfo');
+            
+             $('#' + disp_id).empty();
+              $('#' + disp_id).append(printButton);
+            var ref = JSON.stringify(json);
+            $('#' + disp_id).append('Your Booking has Been Confirmed! <br>');
 
 
+           
 
-            var name = JSON.stringify(json);
+            $('#' + disp_id).append('Your Booking Reference Number is: <br>');
 
-            $('#' + disp_id).append(JSON.stringify(json));
 
+            var Abref = ref.split(':');
+
+            console.log(Abref);
+            var bookingref = parseFloat(Abref[1]);
+
+            $('#' + disp_id).append("<br>" + bookingref);
+            
+            $('#' + disp_id).append('<br>We look forward to seeing you!: <br>');
+            post_confirmation_C('confirmation');
         }
     });
+};
+
+function post_confirmation_C(disp_id) {
+    var d = 0;   
+    for (i = 0; i < newIndex; i++) {
+    d++;
+        var storedData;
+    storedData = getObject('checkAvailability'+d);
+    confirmation_C('http://localhost:8081/insert_roombooking', storedData, disp_id);
+    }
+      
 }
 ;
+
+function confirmation_C(path, data, disp_id) {
+
+    // convert the parameters to a JSON data string
+    var json = JSON.stringify(data);
+
+
+
+    $.ajax({
+        url: path,
+        type: "POST",
+        data: json,
+        success: function (rt) {
+            console.log(rt); // returned data
+            var json = JSON.parse(rt); // the returned data will be an array
+            var printButton = "<input type='button' value='Print Booking Confirmation' class='btn' onClick='window.print()'>";
+            clear_deets('carddeets', 'paymentinfo');
+            
+             $('#' + disp_id).empty();
+              $('#' + disp_id).append(printButton);
+            var ref = JSON.stringify(json);
+            $('#' + disp_id).append('Your Booking has Been Confirmed! <br>');
+
+
+           
+
+            $('#' + disp_id).append('Your Booking Reference Number is: <br>');
+
+
+            var Abref = ref.split(':');
+
+            console.log(Abref);
+            var bookingref = parseFloat(Abref[1]);
+
+            $('#' + disp_id).append("<br>" + bookingref);
+            
+            $('#' + disp_id).append('<br>We look forward to seeing you!: <br>');
+            
+        }
+    });
+};
+function clear_deets(disp_id, disp_id2){
+    
+    $('#' + disp_id).empty();
+     $('#' + disp_id).empty();
+}
+
+
+
 
 $(document).ready(function () {
 
@@ -347,3 +497,127 @@ $(document).ready(function () {
     }, 5000);
 });
 
+
+(function ($)
+{
+    $('#clicker1').click(function () {
+        $(this).toggleClass('active');
+    });
+})(jQuery);
+
+$(document).ready(function ()
+{
+    $("#cf_onclick").click(function () {
+        $("#cf2 img.top").toggleClass("transparent");
+    });
+
+    $(document).ready(function ()
+    {
+        $("#cf7_controls").on('click', 'span', function ()
+        {
+            $("#cf7 img").removeClass("opaque");
+            var newImage = $(this).index();
+            $("#cf7 img").eq(newImage).addClass("opaque");
+            $("#cf7_controls span").removeClass("selected");
+            $(this).addClass("selected");
+        });
+    });
+});
+
+function addRoom(disp_id) {
+    var storedData;
+    storedData = getObject('checkAvailability'+newIndex);
+    rooms('http://localhost:8081/add_room', storedData, disp_id);
+}
+;
+
+
+function rooms(path, data, disp_id) {
+
+    // convert the parameters to a JSON data string
+    var json = JSON.stringify(data);
+    
+
+    $.ajax({
+        url: path,
+        type: "POST",
+        data: json,
+        success: function (rt) {
+            console.log(rt); // returned data
+            var json = JSON.parse(rt); // the returned data will be an array
+            
+             if (json.length > 0) {
+
+                $('#' + disp_id).empty;
+                $('#' + disp_id).append("<h3>Room Added</h3>");
+
+
+                    if (JSON.stringify(json).includes('sup_d'))
+                    {
+                        
+                        $('#' + disp_id).append("><h3>Premium Double:</h3><img src='premiumdouble.jpg' alt='premiumdouble'>" 
+                                + "<br>" + "From:" + "<br>" + data.CID + "<br/>" + "<br>" + "To:" + "<br/>" + "<br>" + data.COD + "<br/>");
+
+                    } else
+                    if (JSON.stringify(json).includes('sup_t'))
+                    {
+                      
+                        $('#' + disp_id).append("<h3>Premium Twin:</h3></td></tr><tr><td><img src='premiumtwin.jpg' alt='premiumtwin'>" + "<br>" 
+                                + "From:" + "<br>" + data.CID + "<br/>" + "<br>" + "To:" + "<br/>" + "<br>" + data.COD + "<br/>");
+
+                    } else
+                    if (JSON.stringify(json).includes('std_t'))
+                    {
+                        
+                        $('#' + disp_id).append("<h3>Standard Twin:</h3><img src='standardtwin.jpg' alt='premiumtwin'>" 
+                                + "<br>" + "From:" + "<br>" + data.CID + "<br/>" + "<br>" + "To:" + "<br/>" + "<br>" + data.COD + "<br/>");
+
+                    } else
+                    if (JSON.stringify(json).includes('std_d'))
+                    {
+                        
+                        $('#' + disp_id).append("<h3>Standard Double:</h3><img src='standarddouble.jpg' alt='standarddouble'>" 
+                                + "<br>" + "From:" + "<br>" + data.CID + "<br/>" + "<br>" + "To:" + "<br/>" + "<br>" + data.COD + "<br/>");
+                    }                 
+                
+                 
+                 
+                }
+                
+                if(json.length < 1){
+                    console.log("clear test")                    
+                    newIndex--;  
+                    
+                    alert("Sorry no rooms of the type available, but please try other room types");
+            }
+         
+        }
+    });
+}
+;
+
+function clearEverything(){
+    
+    var storedData;
+    storedData = getObject('checkAvailability'+newIndex);
+    clearAll('http://localhost:8081/delete_all', storedData);
+    
+}
+
+function clearAll(path, data) {
+
+    // convert the parameters to a JSON data string
+    var json = JSON.stringify(data);
+
+
+
+    $.ajax({
+        url: path,
+        type: "POST",
+        data: json,
+        success: function (rt) {
+            
+            window.localStorage.clear();
+        }
+    });
+};
